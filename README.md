@@ -1,1 +1,1 @@
-# treasureHunt
+# Treasure Hunt
