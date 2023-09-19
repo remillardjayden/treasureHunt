@@ -27,20 +27,20 @@ public class gameScreen extends Screen {
                 } else {
                     treasureSearch.grid[r][c] = null;
                 }
-                for(int i = 0; i < treasureSearch.enemies.size(); i++) {
-                    if(treasureSearch.enemies.get(i).getRow() == r && treasureSearch.enemies.get(i).getCol() == c) {
-                        treasureSearch.grid[r][c] = treasureSearch.enemies.get(i);
+                for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                    if(Enemy.allEnemies.get(i).getRow() == r && Enemy.allEnemies.get(i).getCol() == c) {
+                        treasureSearch.grid[r][c] = Enemy.allEnemies.get(i);
                     } 
                 }
             }
         }
-        for(int e = 0; e < treasureSearch.enemies.size(); e++) {
-            if(treasureSearch.p1.getRow() == treasureSearch.enemies.get(e).getRow() && treasureSearch.p1.getCol() == treasureSearch.enemies.get(e).getCol()) {
+        for(int e = 0; e < Enemy.allEnemies.size(); e++) {
+            if(treasureSearch.p1.getRow() == Enemy.allEnemies.get(e).getRow() && treasureSearch.p1.getCol() == Enemy.allEnemies.get(e).getCol()) {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
-                for(int x = 0; x < treasureSearch.enemies.size(); x++) {
-                    while(treasureSearch.enemies.get(x).getRow()%2 != 0) { treasureSearch.enemies.get(x).setRow((int)(Math.random()*15)); }
-                    while(treasureSearch.enemies.get(x).getCol()%2 != 1) { treasureSearch.enemies.get(x).setCol((int)(Math.random()*15)); }
+                for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                    while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
+                    while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
                 }
                 treasureSearch.p1.setGold(5);
                 treasureSearch.p1.setTreasure(0);
@@ -48,12 +48,21 @@ public class gameScreen extends Screen {
                 break;
             }
         }
+        if(treasureSearch.p1.getCounter() == 5 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 5) {
+            new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
+            for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
+                while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
+            }
+            treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
+            treasureSearch.p1.resetCounter();
+        }
     }
     public void draw(Graphics pen) {
         for(int r = 0; r < treasureSearch.grid.length; r++) {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
-                for(int i = 0; i < treasureSearch.enemies.size(); i++) {
-                    if(treasureSearch.grid[r][c] == treasureSearch.enemies.get(i)) {
+                for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                    if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
                         pen.setColor(Color.RED);
                     }
                 }
