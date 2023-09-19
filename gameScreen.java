@@ -46,6 +46,7 @@ public class gameScreen extends Screen {
                 }
                 treasureSearch.p1.setGold(5);
                 treasureSearch.p1.resetCounter();
+                treasureSearch.p1.resetMaxGold();
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
                 break;

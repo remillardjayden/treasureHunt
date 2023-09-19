@@ -20,6 +20,7 @@ public class Player extends GamerObject{
     }
     public void setGold(int g) { totalGold = g; }
     public int getMaxGold() { return maxGold; }
+    public void resetMaxGold() { maxGold = totalGold; }
     public int getCounter() { return counter; }
     public void resetCounter() { counter = totalGold % 5; }
 }
