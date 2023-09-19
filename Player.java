@@ -4,7 +4,7 @@ public class Player extends GamerObject{
     public Player(int row, int col) {
         super(row, col);
         totalTreasure = 0;
-        totalGold = 5;
+        totalGold = 10;
         maxGold = totalGold;
         counter = 0;
     }
@@ -16,11 +16,11 @@ public class Player extends GamerObject{
         totalGold += g;
         if(totalGold > maxGold) { maxGold = totalGold; }
         counter += g;
-        if(counter > 5) { counter = 5; }
+        if(counter > 10) { counter = 10; }
     }
     public void setGold(int g) { totalGold = g; }
     public int getMaxGold() { return maxGold; }
     public void resetMaxGold() { maxGold = totalGold; }
     public int getCounter() { return counter; }
-    public void resetCounter() { counter = totalGold % 5; }
+    public void resetCounter() { counter = totalGold % 10; }
 }

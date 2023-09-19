@@ -44,7 +44,7 @@ public class gameScreen extends Screen {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
                 }
-                treasureSearch.p1.setGold(5);
+                treasureSearch.p1.setGold(10);
                 treasureSearch.p1.resetCounter();
                 treasureSearch.p1.resetMaxGold();
                 treasureSearch.p1.setTreasure(0);
@@ -52,7 +52,7 @@ public class gameScreen extends Screen {
                 break;
             }
         }
-        if(treasureSearch.p1.getCounter() == 5 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 5) {
+        if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 10) {
             new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
