@@ -71,29 +71,29 @@ public class treasureSearch extends Game  {
                     p1.setCol(0);
                 }
             }
-        }
-        for(int i = 0; i < Enemy.allEnemies.size(); i++) {
-            grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = null;
-            int roll = (int)(Math.random()*4);
-            if(roll == 0){
-                Enemy.allEnemies.get(i).decreaseCol();
-                if(Enemy.allEnemies.get(i).getCol() < 0) {
-                    Enemy.allEnemies.get(i).setCol(14);
-                }
-            } else if(roll == 1) {
-                Enemy.allEnemies.get(i).decreaseRow();
-                if(Enemy.allEnemies.get(i).getRow() < 0) {
-                    Enemy.allEnemies.get(i).setRow(14);
-                }
-            } else if(roll == 2) {
-                Enemy.allEnemies.get(i).increaseCol();
-                if(Enemy.allEnemies.get(i).getCol() > 14) {
-                    Enemy.allEnemies.get(i).setCol(0);
-                }
-            } else {
-                Enemy.allEnemies.get(i).increaseRow();
-                if(Enemy.allEnemies.get(i).getRow() > 14) {
-                    Enemy.allEnemies.get(i).setRow(0);
+            for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = null;
+                int roll = (int)(Math.random()*4);
+                if(roll == 0){
+                    Enemy.allEnemies.get(i).decreaseCol();
+                    if(Enemy.allEnemies.get(i).getCol() < 0) {
+                        Enemy.allEnemies.get(i).setCol(14);
+                    }
+                } else if(roll == 1) {
+                    Enemy.allEnemies.get(i).decreaseRow();
+                    if(Enemy.allEnemies.get(i).getRow() < 0) {
+                        Enemy.allEnemies.get(i).setRow(14);
+                    }
+                } else if(roll == 2) {
+                    Enemy.allEnemies.get(i).increaseCol();
+                    if(Enemy.allEnemies.get(i).getCol() > 14) {
+                        Enemy.allEnemies.get(i).setCol(0);
+                    }
+                } else {
+                    Enemy.allEnemies.get(i).increaseRow();
+                    if(Enemy.allEnemies.get(i).getRow() > 14) {
+                        Enemy.allEnemies.get(i).setRow(0);
+                    }
                 }
             }
         }
