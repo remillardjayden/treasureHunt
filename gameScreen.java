@@ -38,11 +38,14 @@ public class gameScreen extends Screen {
             if(treasureSearch.p1.getRow() == Enemy.allEnemies.get(e).getRow() && treasureSearch.p1.getCol() == Enemy.allEnemies.get(e).getCol()) {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
+                Enemy.allEnemies.clear();
+                new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
                 }
                 treasureSearch.p1.setGold(5);
+                treasureSearch.p1.resetCounter();
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
                 break;
