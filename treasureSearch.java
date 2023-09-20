@@ -48,6 +48,8 @@ public class treasureSearch extends Game  {
         
     @Override
     public void keyTyped(KeyEvent ke) {
+        int xDelta = 0;
+        int yDelta = 0;
         if(ke.getKeyChar() == 'w' || ke.getKeyChar() == 'a' || ke.getKeyChar() == 's' || ke.getKeyChar() == 'd') {
             grid[p1.getRow()][p1.getCol()] = null;
             if(ke.getKeyChar() == 'w') {
@@ -73,26 +75,57 @@ public class treasureSearch extends Game  {
             }
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = null;
-                int roll = (int)(Math.random()*4);
-                if(roll == 0){
-                    Enemy.allEnemies.get(i).decreaseCol();
-                    if(Enemy.allEnemies.get(i).getCol() < 0) {
-                        Enemy.allEnemies.get(i).setCol(14);
-                    }
-                } else if(roll == 1) {
-                    Enemy.allEnemies.get(i).decreaseRow();
-                    if(Enemy.allEnemies.get(i).getRow() < 0) {
-                        Enemy.allEnemies.get(i).setRow(14);
-                    }
-                } else if(roll == 2) {
-                    Enemy.allEnemies.get(i).increaseCol();
-                    if(Enemy.allEnemies.get(i).getCol() > 14) {
-                        Enemy.allEnemies.get(i).setCol(0);
+                if(i == 0) {
+                    xDelta = Math.abs(p1.getCol() - Enemy.allEnemies.get(i).getCol());
+                    yDelta = Math.abs(p1.getRow() - Enemy.allEnemies.get(i).getRow());
+                    if(yDelta > xDelta) {
+                        if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) > Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
+                            Enemy.allEnemies.get(i).decreaseRow();
+                            if(Enemy.allEnemies.get(i).getRow() < 0) {
+                                Enemy.allEnemies.get(i).setRow(14);
+                            }
+                        } else if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) < Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
+                            Enemy.allEnemies.get(i).increaseRow();
+                            if(Enemy.allEnemies.get(i).getRow() > 14) {
+                                Enemy.allEnemies.get(i).setRow(0);
+                            }
+                        }
+                    } else if(xDelta > yDelta) {
+                        if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) > Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
+                            Enemy.allEnemies.get(i).decreaseCol();
+                            if(Enemy.allEnemies.get(i).getCol() < 0) {
+                                Enemy.allEnemies.get(i).setCol(14);
+                            }
+                        // Movement if right < left
+                        } else if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) < Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
+                            Enemy.allEnemies.get(i).increaseCol();
+                            if(Enemy.allEnemies.get(i).getCol() > 14) {
+                                Enemy.allEnemies.get(i).setCol(0);
+                            }
+                        }
                     }
                 } else {
-                    Enemy.allEnemies.get(i).increaseRow();
-                    if(Enemy.allEnemies.get(i).getRow() > 14) {
-                        Enemy.allEnemies.get(i).setRow(0);
+                    int roll = (int)(Math.random()*4);
+                    if(roll == 0){
+                        Enemy.allEnemies.get(i).decreaseCol();
+                        if(Enemy.allEnemies.get(i).getCol() < 0) {
+                            Enemy.allEnemies.get(i).setCol(14);
+                        }
+                    } else if(roll == 1) {
+                        Enemy.allEnemies.get(i).decreaseRow();
+                        if(Enemy.allEnemies.get(i).getRow() < 0) {
+                            Enemy.allEnemies.get(i).setRow(14);
+                        }
+                    } else if(roll == 2) {
+                        Enemy.allEnemies.get(i).increaseCol();
+                        if(Enemy.allEnemies.get(i).getCol() > 14) {
+                            Enemy.allEnemies.get(i).setCol(0);
+                        }
+                    } else {
+                        Enemy.allEnemies.get(i).increaseRow();
+                        if(Enemy.allEnemies.get(i).getRow() > 14) {
+                            Enemy.allEnemies.get(i).setRow(0);
+                        }
                     }
                 }
             }

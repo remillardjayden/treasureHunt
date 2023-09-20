@@ -4,7 +4,7 @@ public class Player extends GamerObject{
     public Player(int row, int col) {
         super(row, col);
         totalTreasure = 0;
-        totalGold = 10;
+        totalGold = 0;
         maxGold = totalGold;
         counter = 0;
     }
