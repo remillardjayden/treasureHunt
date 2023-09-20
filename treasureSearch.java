@@ -19,9 +19,13 @@ public class treasureSearch extends Game  {
     public treasureSearch() {
         // initialize variables here
         grid = new Object[15][15];
-        p1 = new Player(7, 7);
-        new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
-        t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1));
+        p1 = new Player(7, 7, "imagesOrPiskels/player.png");
+        int roll = (int)(Math.random()*4);
+        if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy1.1.png"); }
+        else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy2.1.png"); }
+        else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy3.1.png"); }
+        else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy4.1.png"); }
+        t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), "imagesOrPiskels/treasure.png");
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
             while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
             while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }

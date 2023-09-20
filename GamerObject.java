@@ -1,8 +1,10 @@
 public class GamerObject {
     private int row, col;
-    public GamerObject(int row, int col) {
+    private String sprite;
+    public GamerObject(int row, int col, String sprt) {
         this.row = row;
         this.col = col;
+        sprite = sprt;
     }
     public int getRow() { return row; }
     public int getCol() { return col; }
@@ -12,4 +14,5 @@ public class GamerObject {
     public void decreaseRow() { row--; }
     public void increaseCol() { col++; }
     public void decreaseCol() { col--; }
+    public String getSprite() { return sprite; }
 }

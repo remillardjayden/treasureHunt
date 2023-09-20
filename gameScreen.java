@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 public class gameScreen extends Screen {
     ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), new ArrayList<Integer>(), 1000, 100);
@@ -39,7 +40,11 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
                 Enemy.allEnemies.clear();
-                new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
+                int roll = (int)(Math.random()*4);
+                if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy1.1.png"); }
+                else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy2.1.png"); }
+                else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy3.1.png"); }
+                else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy4.1.png"); }
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
@@ -53,7 +58,11 @@ public class gameScreen extends Screen {
             }
         }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
-            new Enemy((int)(Math.random()*15), (int)(Math.random()*15));
+            int roll = (int)(Math.random()*4);
+            if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy1.1.png"); }
+            else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy2.1.png"); }
+            else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy3.1.png"); }
+            else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy4.1.png"); }
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
                 while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
@@ -67,6 +76,7 @@ public class gameScreen extends Screen {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
+                        //pen.drawImage(Enemy.allEnemies.get(i).getSprite(), 50 * (1+c), 50 * (1+r), null);
                         pen.setColor(Color.RED);
                     }
                 }

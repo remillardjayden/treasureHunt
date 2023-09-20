@@ -1,8 +1,8 @@
 public class Player extends GamerObject{
     private int totalTreasure;
     private int totalGold, maxGold, counter;
-    public Player(int row, int col) {
-        super(row, col);
+    public Player(int row, int col, String sprt) {
+        super(row, col, sprt);
         totalTreasure = 0;
         totalGold = 0;
         maxGold = totalGold;
