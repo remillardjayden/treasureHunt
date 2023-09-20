@@ -96,11 +96,37 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getCol() < 0) {
                                 Enemy.allEnemies.get(i).setCol(14);
                             }
-                        // Movement if right < left
                         } else if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) < Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
                             Enemy.allEnemies.get(i).increaseCol();
                             if(Enemy.allEnemies.get(i).getCol() > 14) {
                                 Enemy.allEnemies.get(i).setCol(0);
+                            }
+                        }
+                    } else {
+                        int roll = (int)(Math.random()*2);
+                        if(roll == 0) {
+                            if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) > Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
+                                Enemy.allEnemies.get(i).decreaseRow();
+                                if(Enemy.allEnemies.get(i).getRow() < 0) {
+                                    Enemy.allEnemies.get(i).setRow(14);
+                                }
+                            } else if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) < Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
+                                Enemy.allEnemies.get(i).increaseRow();
+                                if(Enemy.allEnemies.get(i).getRow() > 14) {
+                                    Enemy.allEnemies.get(i).setRow(0);
+                                }
+                            }
+                        } else {
+                            if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) > Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
+                                Enemy.allEnemies.get(i).decreaseCol();
+                                if(Enemy.allEnemies.get(i).getCol() < 0) {
+                                    Enemy.allEnemies.get(i).setCol(14);
+                                }
+                            } else if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) < Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
+                                Enemy.allEnemies.get(i).increaseCol();
+                                if(Enemy.allEnemies.get(i).getCol() > 14) {
+                                    Enemy.allEnemies.get(i).setCol(0);
+                                }
                             }
                         }
                     }
@@ -133,9 +159,7 @@ public class treasureSearch extends Game  {
     }
 
     @Override
-    public void keyPressed(KeyEvent ke) {
-        activeScreen.keyPressed(ke);
-    }
+    public void keyPressed(KeyEvent ke) { activeScreen.keyPressed(ke); }
 
     @Override
     public void keyReleased(KeyEvent ke) {}
