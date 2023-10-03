@@ -2,7 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 public class gameScreen extends Screen {
     ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), new ArrayList<Integer>(), 1000, 100);
