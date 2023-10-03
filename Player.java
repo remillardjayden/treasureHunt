@@ -1,7 +1,8 @@
+import java.awt.image.BufferedImage;
 public class Player extends GamerObject{
     private int totalTreasure;
     private int totalGold, maxGold, counter;
-    public Player(int row, int col, String sprt) {
+    public Player(int row, int col, BufferedImage sprt) {
         super(row, col, sprt);
         totalTreasure = 0;
         totalGold = 0;

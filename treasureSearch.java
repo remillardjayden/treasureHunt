@@ -2,7 +2,10 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 public class treasureSearch extends Game  {
     public static final String TITLE = "Treasure Search";
     public static final int SCREEN_WIDTH = 1940;
@@ -16,16 +19,44 @@ public class treasureSearch extends Game  {
     static gameScreen game;
     static titleScreen start;
     static endScreen end;
+    private BufferedImage playerImg;
+    private BufferedImage treasureImg;
+    private BufferedImage e11, e12, e13, e14;
+    private BufferedImage e21, e22, e23, e24;
+    private BufferedImage e31, e32, e33, e34;
+    private BufferedImage e41, e42, e43, e44;
     public treasureSearch() {
         // initialize variables here
+        try {
+            playerImg=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/player.png"));
+            treasureImg=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/treasure.png"));
+            e11=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.1.png"));
+            e12=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.2.png"));
+            e13=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.3.png"));
+            e14=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.4.png"));
+            e21=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.1.png"));
+            e22=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.2.png"));
+            e23=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.3.png"));
+            e24=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.4.png"));
+            e31=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.1.png"));
+            e32=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.2.png"));
+            e33=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.3.png"));
+            e34=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.4.png"));
+            e41=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.1.png"));
+            e42=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.2.png"));
+            e43=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.3.png"));
+            e44=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.4.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         grid = new Object[15][15];
-        p1 = new Player(7, 7, "imagesOrPiskels/player.png");
+        p1 = new Player(7, 7, playerImg);
         int roll = (int)(Math.random()*4);
-        if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy1.1.png"); }
-        else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy2.1.png"); }
-        else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy3.1.png"); }
-        else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), "imagesOrPiskels/enemy4.1.png"); }
-        t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), "imagesOrPiskels/treasure.png");
+        if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e11); }
+        else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e21); }
+        else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e31); }
+        else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e41); }
+        t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
             while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
             while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
@@ -85,6 +116,10 @@ public class treasureSearch extends Game  {
                     if(yDelta > xDelta) {
                         if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) > Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
                             Enemy.allEnemies.get(i).decreaseRow();
+                            if(Enemy.allEnemies.get(i).getSprite() == e12 || Enemy.allEnemies.get(i).getSprite() == e13 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e11); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e21); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e31); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e41); }
                             if(Enemy.allEnemies.get(i).getRow() < 0) {
                                 Enemy.allEnemies.get(i).setRow(14);
                             }
