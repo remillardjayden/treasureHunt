@@ -4,9 +4,17 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 public class gameScreen extends Screen {
     ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), new ArrayList<Integer>(), 1000, 100);
+    private BufferedImage playerImg;
+    try {
+        playerImg=ImageIO.read(getClass().getResourceAsStream(treasureSearch.p1.getSprite())); 
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     public gameScreen(String title, Color color) {
         super(title, color);
     }
@@ -77,7 +85,11 @@ public class gameScreen extends Screen {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
-                        //pen.drawImage(Enemy.allEnemies.get(i).getSprite(), 50 * (1+c), 50 * (1+r), null);
+                        try {
+                            pen.drawImage(Enemy.allEnemies.get(i).getSprite(), 50 * (1+c), 50 * (1+r), null);
+                        } catch (IOException e) {
+                            
+                        }
                         pen.setColor(Color.RED);
                     }
                 }
