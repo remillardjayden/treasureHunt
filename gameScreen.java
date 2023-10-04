@@ -39,7 +39,11 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
                 Enemy.allEnemies.clear();
-                new Enemy((int)(Math.random()*15), (int)(Math.random()*15), Enemy.allEnemies.get(e).getSprite());
+                int roll = (int)(Math.random()*4);
+                if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
+                else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
+                else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
+                else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
@@ -73,7 +77,7 @@ public class gameScreen extends Screen {
                 pen.fillRect(50 * (1+c), 50 * (1+r), 50, 50);
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
-                        pen.setColor(Color.RED);
+                        pen.drawImage(Enemy.allEnemies.get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
                     }
                 }
                 if(treasureSearch.grid[r][c] == treasureSearch.p1) {
