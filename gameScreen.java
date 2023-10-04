@@ -2,10 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 public class gameScreen extends Screen {
     ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), new ArrayList<Integer>(), 1000, 100);
     public gameScreen(String title, Color color) {
@@ -42,11 +39,7 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
                 Enemy.allEnemies.clear();
-                int roll = (int)(Math.random()*4);
-                if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), Enemy.allEnemies.get(e).getSprite()); }
-                else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e21); }
-                else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e31); }
-                else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e41); }
+                new Enemy((int)(Math.random()*15), (int)(Math.random()*15), Enemy.allEnemies.get(e).getSprite());
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
@@ -61,10 +54,10 @@ public class gameScreen extends Screen {
         }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
             int roll = (int)(Math.random()*4);
-            if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e11); }
-            else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e21); }
-            else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e31); }
-            else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), e41); }
+            if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
+            else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
+            else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
+            else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
                 while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
@@ -84,9 +77,9 @@ public class gameScreen extends Screen {
                     }
                 }
                 if(treasureSearch.grid[r][c] == treasureSearch.p1) {
-                    pen.drawImage(playerImg,50*(1+c),50*(1+r),50,50,null);
+                    pen.drawImage(treasureSearch.p1.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 } else if(treasureSearch.grid[r][c] == treasureSearch.t) {
-                    pen.drawImage(treasureImg,50*(1+c),50*(1+r),50,50,null);
+                    pen.drawImage(treasureSearch.t.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 }
                 pen.setColor(Color.BLACK);
                 pen.drawRect(50 * (1+c), 50 * (1+r), 50, 50);
