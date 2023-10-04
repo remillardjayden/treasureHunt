@@ -136,19 +136,19 @@ public class treasureSearch extends Game  {
                     } else if(xDelta > yDelta) {
                         if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) > Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
                             Enemy.allEnemies.get(i).decreaseCol();
-                            if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e13 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e12); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e22); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e32); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e42); }
+                            if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e12 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e13); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e23); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e33); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e43); }
                             if(Enemy.allEnemies.get(i).getCol() < 0) {
                                 Enemy.allEnemies.get(i).setCol(14);
                             }
                         } else if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) < Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
                             Enemy.allEnemies.get(i).increaseCol();
-                            if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e12 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e13); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e23); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e33); }
-                            else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e43); }
+                            if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e13 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e12); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e22); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e32); }
+                            else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e42); }
                             if(Enemy.allEnemies.get(i).getCol() > 14) {
                                 Enemy.allEnemies.get(i).setCol(0);
                             }
@@ -178,19 +178,19 @@ public class treasureSearch extends Game  {
                         } else {
                             if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) > Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
                                 Enemy.allEnemies.get(i).decreaseCol();
-                                if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e13 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e12); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e22); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e32); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e42); }
+                                if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e12 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e13); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e23); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e33); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e43); }
                                 if(Enemy.allEnemies.get(i).getCol() < 0) {
                                     Enemy.allEnemies.get(i).setCol(14);
                                 }
                             } else if(Math.abs((Enemy.allEnemies.get(i).getCol()+1) - p1.getCol()) < Math.abs((Enemy.allEnemies.get(i).getCol()-1) - p1.getCol())) {
                                 Enemy.allEnemies.get(i).increaseCol();
-                                if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e12 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e13); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e23); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e33); }
-                                else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e43); }
+                                if(Enemy.allEnemies.get(i).getSprite() == e11 || Enemy.allEnemies.get(i).getSprite() == e13 || Enemy.allEnemies.get(i).getSprite() == e14) { Enemy.allEnemies.get(i).setSprite(e12); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) { Enemy.allEnemies.get(i).setSprite(e22); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) { Enemy.allEnemies.get(i).setSprite(e32); }
+                                else if (Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44) { Enemy.allEnemies.get(i).setSprite(e42); }
                                 if(Enemy.allEnemies.get(i).getCol() > 14) {
                                     Enemy.allEnemies.get(i).setCol(0);
                                 }
