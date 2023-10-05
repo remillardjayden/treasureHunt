@@ -10,6 +10,7 @@ public class gameScreen extends Screen {
     }
 
     public void update() {
+        shop.addProduct(new Product(""));
         if(treasureSearch.p1.getRow() == treasureSearch.t.getRow() && treasureSearch.p1.getCol() == treasureSearch.t.getCol()) {
             treasureSearch.p1.increaseTreasure();
             treasureSearch.p1.increaseGold(treasureSearch.t.getWorth());
@@ -39,11 +40,7 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setRow(7);
                 treasureSearch.p1.setCol(7);
                 Enemy.allEnemies.clear();
-                int roll = (int)(Math.random()*4);
-                if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
-                else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
-                else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
-                else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
+                new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.emptiness);
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
