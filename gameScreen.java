@@ -19,6 +19,14 @@ public class gameScreen extends Screen {
             treasureSearch.t.setWorth((int)((Math.random()*3)+1));
             treasureSearch.grid[treasureSearch.t.getRow()][treasureSearch.t.getCol()] = treasureSearch.t;
         }
+        for(int e = 0; e < Enemy.allEnemies.size(); e++) {
+            if(Enemy.allEnemies.get(e).getRow() == treasureSearch.t.getRow() && Enemy.allEnemies.get(e).getCol() == treasureSearch.t.getCol()) {
+                treasureSearch.t.setRow((int)(Math.random()*15));
+                treasureSearch.t.setCol((int)(Math.random()*15));
+                treasureSearch.t.setWorth((int)((Math.random()*3)+1));
+                treasureSearch.grid[treasureSearch.t.getRow()][treasureSearch.t.getCol()] = treasureSearch.t;
+            }
+        }
         for(int r = 0; r < treasureSearch.grid.length; r++) {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
                 if(treasureSearch.p1.getRow() == r && treasureSearch.p1.getCol() == c) {

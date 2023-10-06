@@ -109,9 +109,55 @@ public class treasureSearch extends Game  {
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = null;
                 if(i == 0) {
-                    xDelta = Math.abs(p1.getCol() - Enemy.allEnemies.get(i).getCol());
-                    yDelta = Math.abs(p1.getRow() - Enemy.allEnemies.get(i).getRow());
-                    if(yDelta > xDelta) {
+                    xDelta = Enemy.allEnemies.get(i).getCol() - p1.getCol();
+                    yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
+                    if(Math.abs(xDelta) > 4 || Math.abs(yDelta) > 4 ) {
+                        int roll = (int)(Math.random()*4);
+                        if(roll == 0){
+                            Enemy.allEnemies.get(i).decreaseCol();
+                            if(Enemy.allEnemies.get(i).getCol() < 0) {
+                                Enemy.allEnemies.get(i).setCol(14);
+                            }
+                        } else if(roll == 1) {
+                            Enemy.allEnemies.get(i).decreaseRow();
+                            if(Enemy.allEnemies.get(i).getRow() < 0) {
+                                Enemy.allEnemies.get(i).setRow(14);
+                            }
+                        } else if(roll == 2) {
+                            Enemy.allEnemies.get(i).increaseCol();
+                            if(Enemy.allEnemies.get(i).getCol() > 14) {
+                                Enemy.allEnemies.get(i).setCol(0);
+                            }
+                        } else {
+                            Enemy.allEnemies.get(i).increaseRow();
+                            if(Enemy.allEnemies.get(i).getRow() > 14) {
+                                Enemy.allEnemies.get(i).setRow(0);
+                            }
+                        }
+                    } else if(Math.abs(xDelta) <= 4 && Math.abs(yDelta) <= 4) {
+                        if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta != 0) {
+                            Enemy.allEnemies.get(i).increaseCol();
+                        } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta != 0) {
+                            Enemy.allEnemies.get(i).decreaseCol();
+                        } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta != 0) {
+                            Enemy.allEnemies.get(i).increaseRow();
+                        } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta != 0) {
+                            Enemy.allEnemies.get(i).decreaseRow();
+                        } else if(xDelta == 0) {
+                            if(yDelta < 0) {
+                                Enemy.allEnemies.get(i).increaseRow();
+                            } else if(yDelta > 0) {
+                                Enemy.allEnemies.get(i).decreaseRow();
+                            }
+                        } else if(yDelta == 0) {
+                            if(xDelta < 0) {
+                                Enemy.allEnemies.get(i).increaseCol();
+                            } else if(xDelta > 0) {
+                                Enemy.allEnemies.get(i).decreaseCol();
+                            }
+                        }
+                    }
+                    /* if(yDelta > xDelta) {
                         if(Math.abs((Enemy.allEnemies.get(i).getRow()+1) - p1.getRow()) > Math.abs((Enemy.allEnemies.get(i).getRow()-1) - p1.getRow())) {
                             Enemy.allEnemies.get(i).decreaseRow();
                             if(Enemy.allEnemies.get(i).getRow() < 0) {
@@ -162,7 +208,7 @@ public class treasureSearch extends Game  {
                                 }
                             }
                         }
-                    }
+                    } */
                 } else {
                     int roll = (int)(Math.random()*4);
                     if(roll == 0){
