@@ -78,7 +78,7 @@ public class gameScreen extends Screen {
     public void draw(Graphics pen) {
         for(int r = 0; r < treasureSearch.grid.length; r++) {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
-                pen.setColor(Color.WHITE);
+                pen.setColor(Color.BLACK);
                 pen.fillRect(50 * (1+c), 50 * (1+r), 50, 50);
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
@@ -90,8 +90,6 @@ public class gameScreen extends Screen {
                 } else if(treasureSearch.grid[r][c] == treasureSearch.t) {
                     pen.drawImage(treasureSearch.t.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 }
-                pen.setColor(Color.BLACK);
-                pen.drawRect(50 * (1+c), 50 * (1+r), 50, 50);
             }
         }
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
