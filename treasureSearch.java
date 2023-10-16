@@ -135,13 +135,13 @@ public class treasureSearch extends Game  {
                             }
                         }
                     } else if(Math.abs(xDelta) <= 4 && Math.abs(yDelta) <= 4) {
-                        if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta != 0) {
+                        if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta <= 0) {
                             Enemy.allEnemies.get(i).increaseCol();
-                        } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta != 0) {
+                        } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta >= 0) {
                             Enemy.allEnemies.get(i).decreaseCol();
-                        } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta != 0) {
+                        } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta <= 0) {
                             Enemy.allEnemies.get(i).increaseRow();
-                        } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta != 0) {
+                        } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta >= 0) {
                             Enemy.allEnemies.get(i).decreaseRow();
                         } else if(xDelta == 0) {
                             if(yDelta < 0) {
