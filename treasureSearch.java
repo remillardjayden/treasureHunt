@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -55,7 +56,7 @@ public class treasureSearch extends Game  {
             e.printStackTrace();
         }
         ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
-        shop.addProduct(new Product("Multiply Treasure Worth", 10, treasureButton));
+        shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
