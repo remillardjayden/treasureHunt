@@ -2,15 +2,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 public class gameScreen extends Screen {
-    ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), new ArrayList<Integer>(), 1000, 100);
     public gameScreen(String title, Color color) {
         super(title, color);
     }
 
     public void update() {
-        shop.addProduct(new Product(""));
         if(treasureSearch.p1.getRow() == treasureSearch.t.getRow() && treasureSearch.p1.getCol() == treasureSearch.t.getCol()) {
             treasureSearch.p1.increaseTreasure();
             treasureSearch.p1.increaseGold(treasureSearch.t.getWorth());
@@ -95,7 +92,6 @@ public class gameScreen extends Screen {
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         pen.drawString("Gold: " + String.valueOf(treasureSearch.p1.getGold()), 1000, 150);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
-        pen.drawString(shop.getTitle(), shop.getX(), shop.getY());
 
     }
     public void keyPressed (KeyEvent ke) {}

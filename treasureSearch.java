@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 public class treasureSearch extends Game  {
@@ -26,6 +27,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e31, e32, e33, e34;
     static BufferedImage e41, e42, e43, e44;
     static BufferedImage emptiness;
+    static BufferedImage treasureButton;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -48,9 +50,12 @@ public class treasureSearch extends Game  {
             e43=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.3.png"));
             e44=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.4.png"));
             emptiness=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/void.png"));
+            treasureButton=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/multTreasureWorthButton.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
+        shop.addProduct(new Product("Multiply Treasure Worth", 10, treasureButton));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
