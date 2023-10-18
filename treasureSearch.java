@@ -32,26 +32,26 @@ public class treasureSearch extends Game  {
     public treasureSearch() {
         // initialize variables here
         try {
-            playerImg=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/player.png"));
-            treasureImg=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/treasure.png"));
-            e11=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.1.png"));
-            e12=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.2.png"));
-            e13=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.3.png"));
-            e14=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy1.4.png"));
-            e21=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.1.png"));
-            e22=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.2.png"));
-            e23=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.3.png"));
-            e24=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy2.4.png"));
-            e31=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.1.png"));
-            e32=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.2.png"));
-            e33=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.3.png"));
-            e34=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy3.4.png"));
-            e41=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.1.png"));
-            e42=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.2.png"));
-            e43=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.3.png"));
-            e44=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/enemy4.4.png"));
-            emptiness=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/void.png"));
-            treasureButton=ImageIO.read(getClass().getResourceAsStream("/imagesOrPiskels/multTreasureWorthButton.png"));
+            playerImg=ImageIO.read(getClass().getResourceAsStream("/images/player.png"));
+            treasureImg=ImageIO.read(getClass().getResourceAsStream("/images/treasure.png"));
+            e11=ImageIO.read(getClass().getResourceAsStream("/images/enemy1.1.png"));
+            e12=ImageIO.read(getClass().getResourceAsStream("/images/enemy1.2.png"));
+            e13=ImageIO.read(getClass().getResourceAsStream("/images/enemy1.3.png"));
+            e14=ImageIO.read(getClass().getResourceAsStream("/images/enemy1.4.png"));
+            e21=ImageIO.read(getClass().getResourceAsStream("/images/enemy2.1.png"));
+            e22=ImageIO.read(getClass().getResourceAsStream("/images/enemy2.2.png"));
+            e23=ImageIO.read(getClass().getResourceAsStream("/images/enemy2.3.png"));
+            e24=ImageIO.read(getClass().getResourceAsStream("/images/enemy2.4.png"));
+            e31=ImageIO.read(getClass().getResourceAsStream("/images/enemy3.1.png"));
+            e32=ImageIO.read(getClass().getResourceAsStream("/images/enemy3.2.png"));
+            e33=ImageIO.read(getClass().getResourceAsStream("/images/enemy3.3.png"));
+            e34=ImageIO.read(getClass().getResourceAsStream("/images/enemy3.4.png"));
+            e41=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.1.png"));
+            e42=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.2.png"));
+            e43=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.3.png"));
+            e44=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.4.png"));
+            emptiness=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
+            treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
