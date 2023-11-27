@@ -233,30 +233,22 @@ public class treasureSearch extends Game  {
                             yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
                             if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta <= 0) {
                                 Enemy.allEnemies.get(i).increaseCol();
-                                Enemy.allEnemies.get(i).increaseCol();
                             } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta >= 0) {
-                                Enemy.allEnemies.get(i).decreaseCol();
                                 Enemy.allEnemies.get(i).decreaseCol();
                             } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta <= 0) {
                                 Enemy.allEnemies.get(i).increaseRow();
-                                Enemy.allEnemies.get(i).increaseRow();
                             } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta >= 0) {
-                                Enemy.allEnemies.get(i).decreaseRow();
                                 Enemy.allEnemies.get(i).decreaseRow();
                             } else if(xDelta == 0) {
                                 if(yDelta < 0) {
                                     Enemy.allEnemies.get(i).increaseCol();
-                                    Enemy.allEnemies.get(i).increaseRow();
                                 } else if(yDelta > 0) {
                                     Enemy.allEnemies.get(i).decreaseCol();
-                                    Enemy.allEnemies.get(i).decreaseRow();
                                 }
                             } else if(yDelta == 0) {
                                 if(xDelta < 0) {
-                                    Enemy.allEnemies.get(i).increaseCol();
                                     Enemy.allEnemies.get(i).increaseRow();
                                 } else if(xDelta > 0) {
-                                    Enemy.allEnemies.get(i).decreaseCol();
                                     Enemy.allEnemies.get(i).decreaseRow();
                                 }
                             }
