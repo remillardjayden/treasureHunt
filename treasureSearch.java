@@ -26,7 +26,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e11, e12, e13, e14;
     static BufferedImage e21, e22, e23, e24;
     static BufferedImage e31, e32, e33, e34;
-    static BufferedImage e41, e42, e43, e44;
+    static BufferedImage e41, e42, e43, e44, e45;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
     public treasureSearch() {
@@ -50,6 +50,7 @@ public class treasureSearch extends Game  {
             e42=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.2.png"));
             e43=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.3.png"));
             e44=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.4.png"));
+            e45=ImageIO.read(getClass().getResourceAsStream("/images/invispider.png"));
             emptiness=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
             treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
         } catch (IOException e) {
@@ -141,13 +142,13 @@ public class treasureSearch extends Game  {
                             }
                         }
                     } else {
-                        if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta <= 0) {
+                        if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
                             Enemy.allEnemies.get(i).increaseCol();
-                        } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta >= 0) {
+                        } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
                             Enemy.allEnemies.get(i).decreaseCol();
-                        } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta <= 0) {
+                        } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
                             Enemy.allEnemies.get(i).increaseRow();
-                        } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta >= 0) {
+                        } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
                             Enemy.allEnemies.get(i).decreaseRow();
                         } else if(xDelta == 0) {
                             if(yDelta < 0) {
@@ -231,13 +232,13 @@ public class treasureSearch extends Game  {
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
                             xDelta = Enemy.allEnemies.get(i).getCol() - p1.getCol();
                             yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
-                            if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta <= 0) {
+                            if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
                                 Enemy.allEnemies.get(i).increaseCol();
-                            } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta) || yDelta == 0 && xDelta >= 0) {
+                            } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
                                 Enemy.allEnemies.get(i).decreaseCol();
-                            } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta <= 0) {
+                            } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
                                 Enemy.allEnemies.get(i).increaseRow();
-                            } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta) || xDelta == 0 && yDelta >= 0) {
+                            } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
                                 Enemy.allEnemies.get(i).decreaseRow();
                             } else if(xDelta == 0) {
                                 if(yDelta < 0) {
@@ -256,6 +257,107 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 20) {
                                 Enemy.allEnemies.get(i).setTime(0);
                                 Enemy.allEnemies.get(i).changeAngry();
+                            }
+                        }
+                    } else if(Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24) {
+                        int roll = (int)(Math.random()*4);
+                        if(roll == 0 && Enemy.allEnemies.get(i).getCol()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()+1] == null) { Enemy.allEnemies.get(i).increaseCol(); }}
+                        else if(roll == 1 && Enemy.allEnemies.get(i).getCol()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()-1] == null) { Enemy.allEnemies.get(i).decreaseCol(); }}
+                        else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
+                        else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
+                    } else if(Enemy.allEnemies.get(i).getSprite() == e31 || Enemy.allEnemies.get(i).getSprite() == e32 || Enemy.allEnemies.get(i).getSprite() == e33 || Enemy.allEnemies.get(i).getSprite() == e34) {
+                        if(!Enemy.allEnemies.get(i).isAngry()) {
+                            int roll = (int)(Math.random()*4);
+                            if(roll == 0 && Enemy.allEnemies.get(i).getCol()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()+1] == null) { Enemy.allEnemies.get(i).increaseCol(); }}
+                            else if(roll == 1 && Enemy.allEnemies.get(i).getCol()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()-1] == null) { Enemy.allEnemies.get(i).decreaseCol(); }}
+                            else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
+                            else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
+                            Enemy.allEnemies.get(i).increaseTime();
+                            if(Enemy.allEnemies.get(i).getTime() == 10) {
+                                Enemy.allEnemies.get(i).changeAngry();
+                                Enemy.allEnemies.get(i).setTime(0);
+                            }
+                        } else if(Enemy.allEnemies.get(i).isAngry()) {
+                            xDelta = Enemy.allEnemies.get(i).getCol() - t.getCol();
+                            yDelta = Enemy.allEnemies.get(i).getRow() - t.getRow();
+                            if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).increaseCol();
+                            } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).decreaseCol();
+                            } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).increaseRow();
+                            } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).decreaseRow();
+                            } else if(xDelta == 0) {
+                                if(yDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseCol();
+                                } else if(yDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseCol();
+                                }
+                            } else if(yDelta == 0) {
+                                if(xDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseRow();
+                                } else if(xDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseRow();
+                                }
+                            } else if(Math.abs(xDelta) == Math.abs(yDelta)) {
+                                int roll = (int)(Math.random()*4);
+                                if(roll == 0 && xDelta < 0) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()+1] == null) { Enemy.allEnemies.get(i).increaseCol(); }}
+                                else if(roll == 1 && xDelta > 0) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()-1] == null) { Enemy.allEnemies.get(i).decreaseCol(); }}
+                                else if(roll == 2 && yDelta < 0) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
+                                else if(roll == 3 && yDelta > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
+                            }
+                            Enemy.allEnemies.get(i).increaseTime();
+                            if(Enemy.allEnemies.get(i).getTime() == 20) {
+                                Enemy.allEnemies.get(i).setTime(0);
+                                Enemy.allEnemies.get(i).changeAngry();
+                            }
+                        }
+                    } else if(Enemy.allEnemies.get(i).getSprite() == e41 || Enemy.allEnemies.get(i).getSprite() == e42 || Enemy.allEnemies.get(i).getSprite() == e43 || Enemy.allEnemies.get(i).getSprite() == e44 || Enemy.allEnemies.get(i).getSprite() == e45) {
+                        if(!Enemy.allEnemies.get(i).isAngry()) {
+                            int roll = (int)(Math.random()*4);
+                            if(roll == 0 && Enemy.allEnemies.get(i).getCol()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()+1] == null) { Enemy.allEnemies.get(i).increaseCol(); }}
+                            else if(roll == 1 && Enemy.allEnemies.get(i).getCol()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()-1] == null) { Enemy.allEnemies.get(i).decreaseCol(); }}
+                            else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
+                            else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
+                            Enemy.allEnemies.get(i).increaseTime();
+                            if(Enemy.allEnemies.get(i).getTime() == 10) {
+                                Enemy.allEnemies.get(i).changeAngry();
+                                Enemy.allEnemies.get(i).setTime(0);
+                            }
+                        } else if(Enemy.allEnemies.get(i).isAngry()) {
+                            Enemy.allEnemies.get(i).setSprite(e45);
+                            xDelta = Enemy.allEnemies.get(i).getCol() - p1.getCol();
+                            yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
+                            if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).increaseCol();
+                            } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).decreaseCol();
+                            } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).increaseRow();
+                            } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).decreaseRow();
+                            } else if(xDelta == 0) {
+                                if(yDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseCol();
+                                } else if(yDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseCol();
+                                }
+                            } else if(yDelta == 0) {
+                                if(xDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseRow();
+                                } else if(xDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseRow();
+                                }
+                            }
+                            if(Enemy.allEnemies.get(i).getTime() % 3 == 0) {
+                                Enemy.allEnemies.get(i).setSprite(e41);
+                            }
+                            Enemy.allEnemies.get(i).increaseTime();
+                            if(Enemy.allEnemies.get(i).getTime() == 20) {
+                                Enemy.allEnemies.get(i).setSprite(e41);
+                                Enemy.allEnemies.get(i).changeAngry();
+                                Enemy.allEnemies.get(i).setTime(0);
                             }
                         }
                     }
