@@ -13,7 +13,7 @@ public class SimpleAudioPlayer {
     // current status of clip 
     String status; 
     AudioInputStream audioInputStream; 
-    static String filePath; 
+    String filePath; 
     // constructor to initialize streams and clip 
     public SimpleAudioPlayer(String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
         // create AudioInputStream object
@@ -38,8 +38,7 @@ public class SimpleAudioPlayer {
             System.out.println("Audio is already paused"); 
             return; 
         } 
-        this.currentFrame =  
-        this.clip.getMicrosecondPosition(); 
+        this.currentFrame = this.clip.getMicrosecondPosition(); 
         clip.stop(); 
         status = "paused"; 
     } 
@@ -70,7 +69,7 @@ public class SimpleAudioPlayer {
     public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
         currentFrame = 0L; 
         clip.stop(); 
-        clip.close(); 
+        clip.close();
     } 
       
     // Method to jump over a specific part 
@@ -88,7 +87,6 @@ public class SimpleAudioPlayer {
     // Method to reset audio stream 
     public void resetAudioStream() throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile()); 
-        clip.open(audioInputStream); 
-        clip.loop(Clip.LOOP_CONTINUOUSLY); 
+        clip.open(audioInputStream);
     }
 } 

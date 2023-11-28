@@ -72,6 +72,12 @@ public class gameScreen extends Screen {
             }
             treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
             treasureSearch.p1.resetCounter();
+            treasureSearch.electrode.play();
+            try {
+                treasureSearch.electrode.resetAudioStream();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public void draw(Graphics pen) {
