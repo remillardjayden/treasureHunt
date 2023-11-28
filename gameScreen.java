@@ -55,16 +55,16 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.resetMaxGold();
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
+                treasureSearch.hen.play();
                 break;
             }
         }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
-            // int roll = (int)(Math.random()*4);
-            int roll = 4;
-            if(roll == 0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
-            else if(roll == 1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
-            else if(roll == 2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
-            else if(roll == 3) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
+            int roll = (int)(Math.random()*20) + 1;
+            if(roll%5==0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
+            else if(roll%5==1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
+            else if(roll%5==2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
+            else if(roll%5==3) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
             else { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e51); }
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                 while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
