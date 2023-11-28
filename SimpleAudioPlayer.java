@@ -21,9 +21,8 @@ public class SimpleAudioPlayer {
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile()); 
         // create clip reference 
         clip = AudioSystem.getClip(); 
-        // open audioInputStream to the clip 
-        clip.open(audioInputStream);    
-        clip.loop(Clip.LOOP_CONTINUOUSLY); 
+        // open audioInputStream to the clip
+        clip.open(audioInputStream);
     }
       
     // Method to play the audio 

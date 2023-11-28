@@ -66,9 +66,9 @@ public class treasureSearch extends Game  {
             e.printStackTrace();
         }
         try {
-            fred = new SimpleAudioPlayer("/audio/MusicBox.mp3");
-            hen = new SimpleAudioPlayer("/audio/Speech.mp3");
-            electrode = new SimpleAudioPlayer("/audio/Boom.mp3");
+            fred = new SimpleAudioPlayer("audio/MusicBox.wav");
+            hen = new SimpleAudioPlayer("audio/Speech.wav");
+            electrode = new SimpleAudioPlayer("audio/Boom.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }

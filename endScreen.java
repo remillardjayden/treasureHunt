@@ -20,6 +20,11 @@ public class endScreen extends Screen{
     public void keyPressed(KeyEvent ke) {
         if(ke.getKeyCode() == KeyEvent.VK_ENTER && treasureSearch.activeScreen == treasureSearch.end) {
             treasureSearch.activeScreen = treasureSearch.start;
+            try {
+                treasureSearch.hen.stop();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
