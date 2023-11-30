@@ -442,7 +442,7 @@ public class treasureSearch extends Game  {
                                 }
                             }
                             Enemy.allEnemies.get(i).increaseTime();
-                            if(Enemy.allEnemies.get(i).getTime() == 3) {
+                            if(Enemy.allEnemies.get(i).getTime() == 5) {
                                 Enemy.allEnemies.get(i).setSprite(e51);
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
