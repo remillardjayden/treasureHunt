@@ -99,15 +99,6 @@ public class treasureSearch extends Game  {
     public void update() {
         // updating logic
         activeScreen.update();
-        if(activeScreen == start) {
-            para.loop();
-        } else {
-            try {
-                para.resetAudioStream();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
     
     public void draw(Graphics pen) {
