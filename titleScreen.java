@@ -8,7 +8,11 @@ public class titleScreen extends Screen{
         super(title, color);
         begin = new Button("Begin", Color.GREEN, Color.RED);
     }
-    public void update() {}
+    public void update() {
+        if(treasureSearch.activeScreen == this) {
+            treasureSearch.para.loop();
+        }
+    }
     public void draw(Graphics pen) {
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
         pen.setColor(super.getColor());

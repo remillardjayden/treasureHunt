@@ -8,6 +8,11 @@ public class gameScreen extends Screen {
     }
 
     public void update() {
+        try {
+            treasureSearch.para.resetAudioStream();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(treasureSearch.p1.getRow() == treasureSearch.t.getRow() && treasureSearch.p1.getCol() == treasureSearch.t.getCol()) {
             treasureSearch.p1.increaseTreasure();
             treasureSearch.p1.increaseGold(treasureSearch.t.getWorth());
