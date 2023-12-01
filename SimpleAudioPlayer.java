@@ -85,7 +85,8 @@ public class SimpleAudioPlayer {
     } 
       
     // Method to reset audio stream 
-    public void resetAudioStream() throws UnsupportedAudioFileException, IOException, LineUnavailableException { 
+    public void resetAudioStream() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        stop();
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile()); 
         clip.open(audioInputStream);
     }

@@ -21,7 +21,6 @@ public class endScreen extends Screen{
         if(ke.getKeyCode() == KeyEvent.VK_ENTER && treasureSearch.activeScreen == treasureSearch.end) {
             treasureSearch.activeScreen = treasureSearch.start;
             try {
-                treasureSearch.hen.stop();
                 treasureSearch.hen.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
