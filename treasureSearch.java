@@ -25,7 +25,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e11, e12, e13, e14, e15;
     static BufferedImage e21, e22, e23, e24, e25;
     static BufferedImage e31, e32, e33, e34, e35;
-    static BufferedImage e41, e42, e43, e44, e45;
+    static BufferedImage e41, e42, e43, e44, e45, e46;
     static BufferedImage e51, e52, e53, e54, e55;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
@@ -55,6 +55,7 @@ public class treasureSearch extends Game  {
             e43=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.3.png"));
             e44=ImageIO.read(getClass().getResourceAsStream("/images/enemy4.4.png"));
             e45=ImageIO.read(getClass().getResourceAsStream("/images/invispider.png"));
+            e46=ImageIO.read(getClass().getResourceAsStream("/images/invispider.png"));
             e51=ImageIO.read(getClass().getResourceAsStream("/images/enemy5.1.png"));
             e52=ImageIO.read(getClass().getResourceAsStream("/images/enemy5.2.png"));
             e53=ImageIO.read(getClass().getResourceAsStream("/images/enemy5.3.png"));
@@ -288,7 +289,7 @@ public class treasureSearch extends Game  {
                         else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
                         else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
                         Enemy.allEnemies.get(i).increaseTime();
-                        if(Enemy.allEnemies.get(i).getTime() == 3 && Enemy.allEnemies.get(i).getSprite() == e25) {
+                        if(Enemy.allEnemies.get(i).getTime() == 5 && Enemy.allEnemies.get(i).getSprite() == e25) {
                             Enemy.allEnemies.get(i).changeAngry();
                             Enemy.allEnemies.get(i).setTime(0);
                         }
@@ -336,7 +337,7 @@ public class treasureSearch extends Game  {
                                 else if(roll == 3 && yDelta > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
                             }
                             Enemy.allEnemies.get(i).increaseTime();
-                            if(Enemy.allEnemies.get(i).getTime() == 3 && Enemy.allEnemies.get(i).getSprite() == e35) {
+                            if(Enemy.allEnemies.get(i).getTime() == 5 && Enemy.allEnemies.get(i).getSprite() == e35) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
@@ -358,7 +359,11 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
-                            Enemy.allEnemies.get(i).setSprite(e45);
+                            if(Enemy.allEnemies.get(i).getSprite() == e46) {
+                                Enemy.allEnemies.get(i).setSprite(e46);
+                            } else {
+                                Enemy.allEnemies.get(i).setSprite(e45);
+                            }
                             xDelta = Enemy.allEnemies.get(i).getCol() - p1.getCol();
                             yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
                             if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
@@ -386,7 +391,7 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).setSprite(e41);
                             }
                             Enemy.allEnemies.get(i).increaseTime();
-                            if(Enemy.allEnemies.get(i).getTime() == 3 && Enemy.allEnemies.get(i).getSprite() == e45) {
+                            if(Enemy.allEnemies.get(i).getTime() == 5 && Enemy.allEnemies.get(i).getSprite() == e46) {
                                 Enemy.allEnemies.get(i).setSprite(e41);
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
@@ -407,11 +412,13 @@ public class treasureSearch extends Game  {
                             Enemy.allEnemies.get(i).increaseTime();
                             if(Enemy.allEnemies.get(i).getTime() == 15) {
                                 for(int r = 1; r < Enemy.allEnemies.size(); r++) {
-                                    Enemy.allEnemies.get(r).changeAngry();
+                                    if(!Enemy.allEnemies.get(r).isAngry()) {
+                                        Enemy.allEnemies.get(r).changeAngry();
+                                    }
                                     if(Enemy.allEnemies.get(r).getSprite() == e11 || Enemy.allEnemies.get(r).getSprite() == e12 || Enemy.allEnemies.get(r).getSprite() == e13 || Enemy.allEnemies.get(r).getSprite() == e14) { Enemy.allEnemies.get(r).setSprite(e15); }
                                     else if(Enemy.allEnemies.get(r).getSprite() == e21 || Enemy.allEnemies.get(r).getSprite() == e22 || Enemy.allEnemies.get(r).getSprite() == e23 || Enemy.allEnemies.get(r).getSprite() == e24) { Enemy.allEnemies.get(r).setSprite(e25); }
                                     else if(Enemy.allEnemies.get(r).getSprite() == e31 || Enemy.allEnemies.get(r).getSprite() == e32 || Enemy.allEnemies.get(r).getSprite() == e33 || Enemy.allEnemies.get(r).getSprite() == e34) { Enemy.allEnemies.get(r).setSprite(e35); }
-                                    else if(Enemy.allEnemies.get(r).getSprite() == e41 || Enemy.allEnemies.get(r).getSprite() == e42 || Enemy.allEnemies.get(r).getSprite() == e43 || Enemy.allEnemies.get(r).getSprite() == e44) { Enemy.allEnemies.get(r).setSprite(e45); }
+                                    else if(Enemy.allEnemies.get(r).getSprite() == e41 || Enemy.allEnemies.get(r).getSprite() == e42 || Enemy.allEnemies.get(r).getSprite() == e43 || Enemy.allEnemies.get(r).getSprite() == e44) { Enemy.allEnemies.get(r).setSprite(e46); }
                                     else { Enemy.allEnemies.get(r).setSprite(e55); }
                                 }
                                 Enemy.allEnemies.get(i).setTime(0);
