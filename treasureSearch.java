@@ -103,7 +103,7 @@ public class treasureSearch extends Game  {
             para.loop();
         } else {
             try {
-                treasureSearch.para.resetAudioStream();
+                para.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
             }
