@@ -30,6 +30,7 @@ public class treasureSearch extends Game  {
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
     static SimpleAudioPlayer fred, hen, electrode;
+    static ItemShop shop;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -73,7 +74,7 @@ public class treasureSearch extends Game  {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ItemShop shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
+        shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
         shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);

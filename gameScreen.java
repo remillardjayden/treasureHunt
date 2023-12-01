@@ -72,12 +72,12 @@ public class gameScreen extends Screen {
             }
             treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
             treasureSearch.p1.resetCounter();
-            treasureSearch.electrode.play();
+            /* treasureSearch.electrode.play();
             try {
                 treasureSearch.electrode.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            } */
         }
     }
     public void draw(Graphics pen) {
@@ -100,6 +100,13 @@ public class gameScreen extends Screen {
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         pen.drawString("Gold: " + String.valueOf(treasureSearch.p1.getGold()), 1000, 150);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+        pen.drawString("Item Shop", treasureSearch.shop.getX(), treasureSearch.shop.getY());
+        pen.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
+            if(treasureSearch.p1.getMaxGold() >= treasureSearch.shop.getProducts().get(i).getPrice()) {
+                pen.drawString(treasureSearch.shop.getProducts().get(i).getName() + ": " + treasureSearch.shop.getProducts().get(i).getPrice() + " gold", treasureSearch.shop.getX(), treasureSearch.shop.getY() + (100 * (i+1)));
+            }
+        }
 
     }
     public void keyPressed (KeyEvent ke) {}
