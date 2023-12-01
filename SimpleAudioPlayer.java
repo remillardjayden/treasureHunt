@@ -90,4 +90,10 @@ public class SimpleAudioPlayer {
         audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile()); 
         clip.open(audioInputStream);
     }
+
+    public void loop() {
+        clip.start(); 
+        status = "play";
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
 } 

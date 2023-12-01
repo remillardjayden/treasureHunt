@@ -29,7 +29,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e51, e52, e53, e54, e55;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer fred, hen, electrode;
+    static SimpleAudioPlayer fred, hen, electrode, para;
     static ItemShop shop;
     public treasureSearch() {
         // initialize variables here
@@ -71,6 +71,7 @@ public class treasureSearch extends Game  {
             fred = new SimpleAudioPlayer("audio/MusicBox.wav");
             hen = new SimpleAudioPlayer("audio/Speech.wav");
             electrode = new SimpleAudioPlayer("audio/Boom.wav");
+            para = new SimpleAudioPlayer("audio/Para.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +99,15 @@ public class treasureSearch extends Game  {
     public void update() {
         // updating logic
         activeScreen.update();
+        if(activeScreen == start) {
+            para.loop();
+        } else {
+            try {
+                treasureSearch.para.resetAudioStream();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     public void draw(Graphics pen) {
