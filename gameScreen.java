@@ -88,8 +88,10 @@ public class gameScreen extends Screen {
                 e.printStackTrace();
             }
             treasureSearch.electrode.play();
-            treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getX()][treasureSearch.shop.getProducts().get(itemcount).getY()] = treasureSearch.shop.getProducts().get(itemcount);
-            itemcount++;
+            if(itemcount < treasureSearch.shop.getProducts().size()) {
+                treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getX()][treasureSearch.shop.getProducts().get(itemcount).getY()] = treasureSearch.shop.getProducts().get(itemcount);
+                itemcount++;
+            }
         }
     }
     public void draw(Graphics pen) {
@@ -109,6 +111,7 @@ public class gameScreen extends Screen {
                 }
                 for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
                     if(treasureSearch.grid[r][c] == treasureSearch.shop.getProducts().get(i)) {
+                        System.out.println("Attempt");
                         pen.drawImage(treasureSearch.shop.getProducts().get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
                     }
                 }
