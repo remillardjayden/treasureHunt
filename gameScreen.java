@@ -60,6 +60,11 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
                 treasureSearch.hen.play();
+                try {
+                    treasureSearch.crim.resetAudioStream();
+                } catch (Exception f) {
+                    f.printStackTrace();
+                }
                 break;
             }
         }
