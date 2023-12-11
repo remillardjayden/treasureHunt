@@ -6,7 +6,6 @@ public class gameScreen extends Screen {
     public gameScreen(String title, Color color) {
         super(title, color);
     }
-
     public void update() {
         try {
             treasureSearch.para.resetAudioStream();

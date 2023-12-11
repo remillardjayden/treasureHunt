@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -11,7 +10,6 @@ public class treasureSearch extends Game  {
     public static final String TITLE = "Treasure Search";
     public static final int SCREEN_WIDTH = 1940;
     public static final int SCREEN_HEIGHT = 1079;
-
     // declare variables here
     static Object[][] grid;
     static Player p1;

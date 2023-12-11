@@ -6,16 +6,12 @@ import java.awt.event.MouseMotionListener;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-public abstract class Game implements KeyListener, MouseListener, MouseMotionListener
-{
+public abstract class Game implements KeyListener, MouseListener, MouseMotionListener {
     private JFrame frame;
     private GamePanel gamePanel;
     boolean running;
     private treasureSearch game;    
-
-    protected void start(String title, int width, int height)
-    {
+    protected void start(String title, int width, int height) {
     	this.game = (treasureSearch)this;
     	running = true;
         frame = new JFrame(title);
@@ -31,19 +27,13 @@ public abstract class Game implements KeyListener, MouseListener, MouseMotionLis
         frame.setBackground(Color.lightGray);
         run();
     }
-
-
-    class GamePanel extends JPanel
-    {
+    class GamePanel extends JPanel {
         private static final long serialVersionUID = 1L;
         @Override
         public void paintComponent(Graphics g) { game.draw(g); }
     }
-
-    private void run()
-    {
-        while (running==true)
-        {
+    private void run() {
+        while (running==true) {
            game.update();
             try { Thread.sleep(10); }
             catch (InterruptedException e) {}
