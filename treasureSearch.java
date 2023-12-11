@@ -25,6 +25,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e31, e32, e33, e34, e35;
     static BufferedImage e41, e42, e43, e44, e45, e46;
     static BufferedImage e51, e52, e53, e54, e55;
+    static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
     static SimpleAudioPlayer fred, hen, electrode, para, crim, whis;
@@ -60,6 +61,12 @@ public class treasureSearch extends Game  {
             e53=ImageIO.read(getClass().getResourceAsStream("/images/enemy5.3.png"));
             e54=ImageIO.read(getClass().getResourceAsStream("/images/enemy5.4.png"));
             e55=ImageIO.read(getClass().getResourceAsStream("/images/invispider.png"));
+            qIdle=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireIdle.png"));
+            qUp=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireLookUp.png"));
+            qDown=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireLookDown.png"));
+            qTalk=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireTalk.png"));
+            qBlink=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireCloseEyes.png"));
+            qSus=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireBiteLip.png"));
             emptiness=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
             treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
         } catch (IOException e) {
@@ -76,7 +83,7 @@ public class treasureSearch extends Game  {
             e.printStackTrace();
         }
         shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
-        shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton));
+        shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);

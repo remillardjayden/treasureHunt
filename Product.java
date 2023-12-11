@@ -4,11 +4,14 @@ public class Product {
     private int count;
     private int price;
     private BufferedImage sprite;
-    public Product(String name, int price, BufferedImage sprt) {
+    private int x, y;
+    public Product(String name, int price, BufferedImage sprt, int x, int y) {
         this.name = name;
         count = 0;
         this.price = price;
         sprite = sprt;
+        this.x = x;
+        this.y = y;
     }
     public String getName() { return name; }
     public int getCount() { return count; }
@@ -16,4 +19,6 @@ public class Product {
     public int getPrice() { return price; }
     public void increasePrice() { price *= 1.5; }
     public BufferedImage getSprite() { return sprite; }
+    public int getX() { return x; }
+    public int getY() { return y; }
 }

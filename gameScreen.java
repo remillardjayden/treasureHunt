@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 public class gameScreen extends Screen {
+    int itemcount = 0;
     public gameScreen(String title, Color color) {
         super(title, color);
     }
@@ -79,7 +80,7 @@ public class gameScreen extends Screen {
                 while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
                 while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
             }
-            treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
+            treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getCol()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
             treasureSearch.p1.resetCounter();
             try {
                 treasureSearch.electrode.resetAudioStream();
@@ -87,6 +88,8 @@ public class gameScreen extends Screen {
                 e.printStackTrace();
             }
             treasureSearch.electrode.play();
+            treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getX()][treasureSearch.shop.getProducts().get(itemcount).getY()] = treasureSearch.shop.getProducts().get(itemcount);
+            itemcount++;
         }
     }
     public void draw(Graphics pen) {
@@ -104,19 +107,25 @@ public class gameScreen extends Screen {
                 } else if(treasureSearch.grid[r][c] == treasureSearch.t) {
                     pen.drawImage(treasureSearch.t.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 }
+                for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
+                    if(treasureSearch.grid[r][c] == treasureSearch.shop.getProducts().get(i)) {
+                        pen.drawImage(treasureSearch.shop.getProducts().get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
+                    }
+                }
             }
         }
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         pen.drawString("Gold: " + String.valueOf(treasureSearch.p1.getGold()), 1000, 150);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
         pen.drawString("Item Shop", treasureSearch.shop.getX(), treasureSearch.shop.getY());
+        pen.drawImage(treasureSearch.qIdle, treasureSearch.shop.getX() + 400, treasureSearch.shop.getY(), null);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
         for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
             if(treasureSearch.p1.getMaxGold() >= treasureSearch.shop.getProducts().get(i).getPrice()) {
-                pen.drawString(treasureSearch.shop.getProducts().get(i).getName() + ": " + treasureSearch.shop.getProducts().get(i).getPrice() + " gold", treasureSearch.shop.getX(), treasureSearch.shop.getY() + (100 * (i+1)));
+                pen.drawImage(treasureSearch.shop.getProducts().get(i).getSprite(), treasureSearch.shop.getX(), treasureSearch.shop.getY() + (70 * (i+1)), null);
+                pen.drawString(treasureSearch.shop.getProducts().get(i).getName() + ": " + treasureSearch.shop.getProducts().get(i).getPrice() + " gold", treasureSearch.shop.getX() + 50, treasureSearch.shop.getY() + (100 * (i+1)));
             }
         }
-
     }
     public void keyPressed (KeyEvent ke) {}
 }
