@@ -24,7 +24,6 @@ public class titleScreen extends Screen{
     public void keyPressed(KeyEvent ke) {
         if(ke.getKeyCode() == KeyEvent.VK_ENTER && treasureSearch.activeScreen == treasureSearch.start) {
             treasureSearch.activeScreen = treasureSearch.game;
-            treasureSearch.crim.loop();
         }
     }
 }
