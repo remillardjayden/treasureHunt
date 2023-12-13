@@ -10,7 +10,7 @@ public class titleScreen extends Screen{
     }
     public void update() {
         if(treasureSearch.activeScreen == this) {
-            treasureSearch.para.loop();
+            treasureSearch.title.loop();
         }
     }
     public void draw(Graphics pen) {
@@ -24,6 +24,20 @@ public class titleScreen extends Screen{
     public void keyPressed(KeyEvent ke) {
         if(ke.getKeyCode() == KeyEvent.VK_ENTER && treasureSearch.activeScreen == treasureSearch.start) {
             treasureSearch.activeScreen = treasureSearch.game;
+            int song = (int)(Math.random()*6);
+            if(song == 0) {
+                treasureSearch.main1.loop();
+            } else if(song == 1) {
+                treasureSearch.main2.loop();
+            } else if(song == 2) {
+                treasureSearch.main3.loop();
+            } else if(song == 3) {
+                treasureSearch.main4.loop();
+            } else if(song == 4) {
+                treasureSearch.main5.loop();
+            } else {
+                treasureSearch.main6.loop();
+            }
         }
     }
 }

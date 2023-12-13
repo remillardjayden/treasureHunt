@@ -28,7 +28,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer fred, hen, electrode, para, crim, whis;
+    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, whistle;
     static ItemShop shop;
     public treasureSearch() {
         // initialize variables here
@@ -74,11 +74,16 @@ public class treasureSearch extends Game  {
         }
         try {
             fred = new SimpleAudioPlayer("audio/MusicBox.wav");
-            hen = new SimpleAudioPlayer("audio/Speech.wav");
-            electrode = new SimpleAudioPlayer("audio/Boom.wav");
-            para = new SimpleAudioPlayer("audio/Para.wav");
-            crim = new SimpleAudioPlayer("audio/Crim.wav");
-            whis = new SimpleAudioPlayer("audio/Whis.wav");
+            endSpeech = new SimpleAudioPlayer("audio/Speech.wav");
+            spawn = new SimpleAudioPlayer("audio/Boom.wav");
+            title = new SimpleAudioPlayer("audio/Title.wav");
+            main1 = new SimpleAudioPlayer("audio/Toji.wav");
+            main2 = new SimpleAudioPlayer("audio/Gojo.wav");
+            main3 = new SimpleAudioPlayer("audio/Sukuna.wav");
+            main4 = new SimpleAudioPlayer("audio/Yuji.wav");
+            main5 = new SimpleAudioPlayer("audio/CounterStrike.wav");
+            main6 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
+            whistle = new SimpleAudioPlayer("audio/Whistle.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -255,11 +260,11 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 10) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 try {
-                                    whis.resetAudioStream();
+                                    whistle.resetAudioStream();
                                 } catch (Exception f) {
                                     f.printStackTrace();
                                 }
-                                whis.play();
+                                whistle.play();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
@@ -290,7 +295,7 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 3 && Enemy.allEnemies.get(i).getSprite() == e15) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 try {
-                                    whis.resetAudioStream();
+                                    whistle.resetAudioStream();
                                 } catch (Exception f) {
                                     f.printStackTrace();
                                 }
@@ -300,7 +305,7 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).setTime(0);
                                 Enemy.allEnemies.get(i).changeAngry();
                                 try {
-                                    whis.resetAudioStream();
+                                    whistle.resetAudioStream();
                                 } catch (Exception f) {
                                     f.printStackTrace();
                                 }
@@ -309,7 +314,7 @@ public class treasureSearch extends Game  {
                     } else if(Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24 || Enemy.allEnemies.get(i).getSprite() == e25) {
                         if(!Enemy.allEnemies.get(i).isAngry()) {
                             try {
-                                whis.resetAudioStream();
+                                whistle.resetAudioStream();
                             } catch (Exception f) {
                                 f.printStackTrace();
                             }
@@ -338,11 +343,11 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
                                 try {
-                                    whis.resetAudioStream();
+                                    whistle.resetAudioStream();
                                 } catch (Exception f) {
                                     f.printStackTrace();
                                 }
-                                whis.play();
+                                whistle.play();
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
                             xDelta = Enemy.allEnemies.get(i).getCol() - t.getCol();
@@ -395,11 +400,11 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 10) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 try {
-                                    whis.resetAudioStream();
+                                    whistle.resetAudioStream();
                                 } catch (Exception f) {
                                     f.printStackTrace();
                                 }
-                                whis.play();
+                                whistle.play();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
@@ -459,11 +464,11 @@ public class treasureSearch extends Game  {
                                     if(!Enemy.allEnemies.get(r).isAngry()) {
                                         Enemy.allEnemies.get(r).changeAngry();
                                         try {
-                                            whis.resetAudioStream();
+                                            whistle.resetAudioStream();
                                         } catch (Exception f) {
                                             f.printStackTrace();
                                         }
-                                        whis.play();
+                                        whistle.play();
                                         Enemy.allEnemies.get(r).setTime(0);
                                     }
                                     if(Enemy.allEnemies.get(r).getSprite() == e11 || Enemy.allEnemies.get(r).getSprite() == e12 || Enemy.allEnemies.get(r).getSprite() == e13 || Enemy.allEnemies.get(r).getSprite() == e14) { Enemy.allEnemies.get(r).setSprite(e15); }

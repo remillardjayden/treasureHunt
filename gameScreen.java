@@ -9,7 +9,7 @@ public class gameScreen extends Screen {
     }
     public void update() {
         try {
-            treasureSearch.para.resetAudioStream();
+            treasureSearch.title.resetAudioStream();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,9 +60,14 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.resetMaxGold();
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
-                treasureSearch.hen.play();
+                treasureSearch.endSpeech.play();
                 try {
-                    treasureSearch.crim.resetAudioStream();
+                    treasureSearch.main1.resetAudioStream();
+                    treasureSearch.main2.resetAudioStream();
+                    treasureSearch.main3.resetAudioStream();
+                    treasureSearch.main4.resetAudioStream();
+                    treasureSearch.main5.resetAudioStream();
+                    treasureSearch.main6.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }
@@ -83,11 +88,11 @@ public class gameScreen extends Screen {
             treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getCol()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
             treasureSearch.p1.resetCounter();
             try {
-                treasureSearch.electrode.resetAudioStream();
+                treasureSearch.spawn.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            treasureSearch.electrode.play();
+            treasureSearch.spawn.play();
             if(itemcount < treasureSearch.shop.getProducts().size()) {
                 treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getX()][treasureSearch.shop.getProducts().get(itemcount).getY()] = treasureSearch.shop.getProducts().get(itemcount);
                 itemcount++;
@@ -111,7 +116,6 @@ public class gameScreen extends Screen {
                 }
                 for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
                     if(treasureSearch.grid[r][c] == treasureSearch.shop.getProducts().get(i)) {
-                        System.out.println("Attempt");
                         pen.drawImage(treasureSearch.shop.getProducts().get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
                     }
                 }
