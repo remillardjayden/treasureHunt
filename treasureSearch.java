@@ -30,6 +30,7 @@ public class treasureSearch extends Game  {
     static BufferedImage treasureButton;
     static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, whistle;
     static ItemShop shop;
+    static int score, highScore;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -91,6 +92,8 @@ public class treasureSearch extends Game  {
         shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
+        highScore = 0;
+        score = p1.getMaxGold();
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
         t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
