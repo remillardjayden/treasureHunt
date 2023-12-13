@@ -121,24 +121,24 @@ public class treasureSearch extends Game  {
     public void keyTyped(KeyEvent ke) {
         int xDelta = 0;
         int yDelta = 0;
-        if(ke.getKeyChar() == 'w' || ke.getKeyChar() == 'a' || ke.getKeyChar() == 's' || ke.getKeyChar() == 'd') {
+        if(ke.getKeyChar() == 'w' || ke.getKeyChar() == 'a' || ke.getKeyChar() == 's' || ke.getKeyChar() == 'd' || ke.getKeyChar() == 'W' || ke.getKeyChar() == 'A' || ke.getKeyChar() == 'S' || ke.getKeyChar() == 'D') {
             grid[p1.getRow()][p1.getCol()] = null;
-            if(ke.getKeyChar() == 'w') {
+            if(ke.getKeyChar() == 'w' || ke.getKeyChar() == 'W') {
                 p1.decreaseRow();
                 if(p1.getRow() < 0) {
                     p1.setRow(14);
                 }
-            } else if(ke.getKeyChar() == 's') {
+            } else if(ke.getKeyChar() == 's' || ke.getKeyChar() == 'S') {
                 p1.increaseRow();
                 if(p1.getRow() > 14) {
                     p1.setRow(0);
                 }
-            } else if(ke.getKeyChar() == 'a') {
+            } else if(ke.getKeyChar() == 'a' || ke.getKeyChar() == 'A') {
                 p1.decreaseCol();
                 if(p1.getCol() < 0) {
                     p1.setCol(14);
                 }
-            } else if(ke.getKeyChar() == 'd') {
+            } else if(ke.getKeyChar() == 'd' || ke.getKeyChar() == 'D') {
                 p1.increaseCol();
                 if(p1.getCol() > 14) {
                     p1.setCol(0);
