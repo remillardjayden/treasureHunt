@@ -10,26 +10,14 @@ public class endScreen extends Screen{
         super(title, color);
         begin = new Button("Retry?", color, Color.BLACK);
     }
-    public void update() {
-        if(treasureSearch.activeScreen == this) {
-            try {
-                FileWriter scoreWriter = new FileWriter("text/highscore.txt");
-                scoreWriter.write(treasureSearch.highScore);
-                scoreWriter.close();
-                System.out.println("Success");
-            } catch (IOException e) {
-                System.out.println("Error");
-                e.printStackTrace();
-            }
-        }
-    }
+    public void update() { }
     public void draw(Graphics pen) {
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
         pen.setColor(super.getColor());
         pen.drawString(super.getTitle(), (treasureSearch.SCREEN_WIDTH/2)-125, 40);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
         pen.drawString("High Score: " + treasureSearch.highScore, (treasureSearch.SCREEN_WIDTH/2)-125, 80);
-        pen.drawString("Your Score: " + treasureSearch.score, (treasureSearch.SCREEN_WIDTH/2)-125, 100);
+        pen.drawString("Your Score: " + treasureSearch.score, (treasureSearch.SCREEN_WIDTH/2)-125, 110);
         begin.draw(pen, (treasureSearch.SCREEN_WIDTH/2)-100, 700);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         pen.drawString("(Press Enter)", (treasureSearch.SCREEN_WIDTH/2)-75, 825);
@@ -41,6 +29,14 @@ public class endScreen extends Screen{
             try {
                 treasureSearch.endSpeech.resetAudioStream();
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                FileWriter scoreWriter = new FileWriter("highscore.txt");
+                scoreWriter.write(treasureSearch.highScore);
+                scoreWriter.close();
+            } catch (IOException e) {
+                System.out.println("Error");
                 e.printStackTrace();
             }
         }

@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 public class gameScreen extends Screen {
     int itemcount = 0;
     public gameScreen(String title, Color color) {
@@ -58,6 +61,18 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setGold(0);
                 treasureSearch.p1.resetCounter();
                 treasureSearch.score = treasureSearch.p1.getMaxGold();
+                try {
+                    File bestScore = new File("highscore.txt");
+                    Scanner scoreCheck = new Scanner(bestScore);
+                    treasureSearch.highScore = scoreCheck.nextLine();
+                    scoreCheck.close();
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Error");
+                    ex.printStackTrace();
+                }
+                if(Integer.parseInt(treasureSearch.highScore) < treasureSearch.score) {
+                    treasureSearch.highScore = treasureSearch.score + "";
+                }
                 treasureSearch.p1.resetMaxGold();
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
@@ -69,6 +84,7 @@ public class gameScreen extends Screen {
                     treasureSearch.main4.resetAudioStream();
                     treasureSearch.main5.resetAudioStream();
                     treasureSearch.main6.resetAudioStream();
+                    treasureSearch.main7.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }

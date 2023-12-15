@@ -28,9 +28,10 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, whistle;
+    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7, whistle;
     static ItemShop shop;
-    static int score, highScore;
+    static int score;
+    static String highScore;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -82,8 +83,9 @@ public class treasureSearch extends Game  {
             main2 = new SimpleAudioPlayer("audio/Gojo.wav");
             main3 = new SimpleAudioPlayer("audio/Sukuna.wav");
             main4 = new SimpleAudioPlayer("audio/Yuji.wav");
-            main5 = new SimpleAudioPlayer("audio/CounterStrike.wav");
-            main6 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
+            main5 = new SimpleAudioPlayer("audio/Mahito.wav");
+            main6 = new SimpleAudioPlayer("audio/CounterStrike.wav");
+            main7 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
             whistle = new SimpleAudioPlayer("audio/Whistle.wav");
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,7 +94,7 @@ public class treasureSearch extends Game  {
         shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
-        highScore = 0;
+        highScore = "2";
         score = p1.getMaxGold();
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
         t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);
