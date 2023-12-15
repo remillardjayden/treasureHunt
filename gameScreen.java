@@ -92,8 +92,9 @@ public class gameScreen extends Screen {
             }
         }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
-            int roll = (int)(Math.random()*20) + 1;
-            if(roll%5==0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
+            int roll = (int)(Math.random()*50) + 1;
+            if(roll==roll) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.g1); }
+            else if(roll%5==0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
             else if(roll%5==1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
             else if(roll%5==2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
             else if(roll%5==3) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e41); }
@@ -138,6 +139,19 @@ public class gameScreen extends Screen {
                 }
             }
         }
+        for(int r = 0; r < treasureSearch.grid.length; r++) {
+            for(int c = 0; c < treasureSearch.grid[r].length; c++) {
+                for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                    if(treasureSearch.grid[r][c] == Enemy.allEnemies.get(i)) {
+                        if(Enemy.allEnemies.get(i).isAngry() && Enemy.allEnemies.get(i).getSprite() == treasureSearch.g5) {
+                            treasureSearch.hollowPurple(pen, Enemy.allEnemies.get(i));
+                        }
+                        pen.drawImage(Enemy.allEnemies.get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
+                    }
+                }
+            }
+        }
+        pen.setColor(Color.BLACK);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         pen.drawString("Gold: " + treasureSearch.p1.getGold(), 1000, 150);
         pen.drawString("Total Score: " + treasureSearch.p1.getMaxGold(), 1000, 175);
