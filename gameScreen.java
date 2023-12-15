@@ -62,7 +62,7 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.resetCounter();
                 treasureSearch.score = treasureSearch.p1.getMaxGold();
                 try {
-                    File bestScore = new File("highscore.txt");
+                    File bestScore = new File("text/highscore.txt");
                     Scanner scoreCheck = new Scanner(bestScore);
                     treasureSearch.highScore = scoreCheck.nextLine();
                     scoreCheck.close();

@@ -32,7 +32,7 @@ public class endScreen extends Screen{
                 e.printStackTrace();
             }
             try {
-                FileWriter scoreWriter = new FileWriter("highscore.txt");
+                FileWriter scoreWriter = new FileWriter("text/highscore.txt");
                 scoreWriter.write(treasureSearch.highScore);
                 scoreWriter.close();
             } catch (IOException e) {
