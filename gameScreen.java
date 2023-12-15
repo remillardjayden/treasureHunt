@@ -139,7 +139,8 @@ public class gameScreen extends Screen {
             }
         }
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-        pen.drawString("Gold: " + String.valueOf(treasureSearch.p1.getGold()), 1000, 150);
+        pen.drawString("Gold: " + treasureSearch.p1.getGold(), 1000, 150);
+        pen.drawString("Total Score: " + treasureSearch.p1.getMaxGold(), 1000, 175);
         pen.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
         pen.drawString("Item Shop", treasureSearch.shop.getX(), treasureSearch.shop.getY());
         pen.drawImage(treasureSearch.qIdle, treasureSearch.shop.getX() + 400, treasureSearch.shop.getY(), null);
