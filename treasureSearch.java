@@ -28,7 +28,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage emptiness;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7, whistle;
+    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -86,7 +86,6 @@ public class treasureSearch extends Game  {
             main5 = new SimpleAudioPlayer("audio/Mahito.wav");
             main6 = new SimpleAudioPlayer("audio/CounterStrike.wav");
             main7 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
-            whistle = new SimpleAudioPlayer("audio/Whistle.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -264,12 +263,6 @@ public class treasureSearch extends Game  {
                             Enemy.allEnemies.get(i).increaseTime();
                             if(Enemy.allEnemies.get(i).getTime() == 10) {
                                 Enemy.allEnemies.get(i).changeAngry();
-                                try {
-                                    whistle.resetAudioStream();
-                                } catch (Exception f) {
-                                    f.printStackTrace();
-                                }
-                                whistle.play();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
@@ -299,30 +292,15 @@ public class treasureSearch extends Game  {
                             Enemy.allEnemies.get(i).increaseTime();
                             if(Enemy.allEnemies.get(i).getTime() == 3 && Enemy.allEnemies.get(i).getSprite() == e15) {
                                 Enemy.allEnemies.get(i).changeAngry();
-                                try {
-                                    whistle.resetAudioStream();
-                                } catch (Exception f) {
-                                    f.printStackTrace();
-                                }
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                             if(Enemy.allEnemies.get(i).getTime() == 20) {
                                 Enemy.allEnemies.get(i).setTime(0);
                                 Enemy.allEnemies.get(i).changeAngry();
-                                try {
-                                    whistle.resetAudioStream();
-                                } catch (Exception f) {
-                                    f.printStackTrace();
-                                }
                             }
                         }
                     } else if(Enemy.allEnemies.get(i).getSprite() == e21 || Enemy.allEnemies.get(i).getSprite() == e22 || Enemy.allEnemies.get(i).getSprite() == e23 || Enemy.allEnemies.get(i).getSprite() == e24 || Enemy.allEnemies.get(i).getSprite() == e25) {
                         if(!Enemy.allEnemies.get(i).isAngry()) {
-                            try {
-                                whistle.resetAudioStream();
-                            } catch (Exception f) {
-                                f.printStackTrace();
-                            }
                             Enemy.allEnemies.get(i).setSprite(e21);
                         }
                         int roll = (int)(Math.random()*4);
@@ -347,12 +325,6 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 10) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
-                                try {
-                                    whistle.resetAudioStream();
-                                } catch (Exception f) {
-                                    f.printStackTrace();
-                                }
-                                whistle.play();
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
                             xDelta = Enemy.allEnemies.get(i).getCol() - t.getCol();
@@ -404,12 +376,6 @@ public class treasureSearch extends Game  {
                             Enemy.allEnemies.get(i).increaseTime();
                             if(Enemy.allEnemies.get(i).getTime() == 10) {
                                 Enemy.allEnemies.get(i).changeAngry();
-                                try {
-                                    whistle.resetAudioStream();
-                                } catch (Exception f) {
-                                    f.printStackTrace();
-                                }
-                                whistle.play();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
@@ -468,12 +434,6 @@ public class treasureSearch extends Game  {
                                 for(int r = 1; r < Enemy.allEnemies.size(); r++) {
                                     if(!Enemy.allEnemies.get(r).isAngry()) {
                                         Enemy.allEnemies.get(r).changeAngry();
-                                        try {
-                                            whistle.resetAudioStream();
-                                        } catch (Exception f) {
-                                            f.printStackTrace();
-                                        }
-                                        whistle.play();
                                         Enemy.allEnemies.get(r).setTime(0);
                                     }
                                     if(Enemy.allEnemies.get(r).getSprite() == e11 || Enemy.allEnemies.get(r).getSprite() == e12 || Enemy.allEnemies.get(r).getSprite() == e13 || Enemy.allEnemies.get(r).getSprite() == e14) { Enemy.allEnemies.get(r).setSprite(e15); }
