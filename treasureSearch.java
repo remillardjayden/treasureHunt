@@ -3,8 +3,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.imageio.ImageIO;
 public class treasureSearch extends Game  {
     public static final String TITLE = "Treasure Search";
@@ -535,10 +539,108 @@ public class treasureSearch extends Game  {
     public static void hollowPurple(Graphics pen, Enemy e) {
         pen.setColor(Color.MAGENTA);
         for(int i = 0; i < 15; i++) {
-            pen.fillRect(50*(i+1), 50*(e.getRow()+1), 50, 50);
+            if(i != e.getCol()) { pen.fillRect(50*(i+1), 50*(e.getRow()+1), 50, 50); }
+            if(grid[e.getRow()][i] != null && i != e.getCol()) {
+                if(grid[e.getRow()][i] == p1) {
+                    p1.setRow(7);
+                    p1.setCol(7);
+                    Enemy.allEnemies.clear();
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
+                    for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                        while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
+                        while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
+                    }
+                    p1.setGold(0);
+                    p1.resetCounter();
+                    score = p1.getMaxGold();
+                    try {
+                        File bestScore = new File("text/highscore.txt");
+                        Scanner scoreCheck = new Scanner(bestScore);
+                        highScore = scoreCheck.nextLine();
+                        scoreCheck.close();
+                    } catch (FileNotFoundException ex) {
+                        System.out.println("Error");
+                        ex.printStackTrace();
+                    }
+                    if(Integer.parseInt(highScore) < score) {
+                        highScore = score + "";
+                    }
+                    p1.resetMaxGold();
+                    p1.setTreasure(0);
+                    activeScreen = end;
+                    endSpeech.play();
+                    try {
+                        main1.resetAudioStream();
+                        main2.resetAudioStream();
+                        main3.resetAudioStream();
+                        main4.resetAudioStream();
+                        main5.resetAudioStream();
+                        main6.resetAudioStream();
+                        main7.resetAudioStream();
+                    } catch (Exception f) {
+                        f.printStackTrace();
+                    }
+                    break;
+                }
+                for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                    if(grid[e.getRow()][i] == Enemy.allEnemies.get(x) && Enemy.allEnemies.get(x) != e) {
+                        Enemy.allEnemies.remove(x);
+                        grid[e.getRow()][i] = null;
+                    }
+                }
+            }
         }
         for(int i = 0; i < 15; i++) {
-            pen.fillRect(50*(e.getCol()+1), 50*(i+1), 50, 50);
+            if(i != e.getRow()) { pen.fillRect(50*(e.getCol()+1), 50*(i+1), 50, 50); }
+            if(grid[i][e.getCol()] != null && i != e.getRow()) {
+                if(grid[i][e.getCol()] == p1) {
+                    p1.setRow(7);
+                    p1.setCol(7);
+                    Enemy.allEnemies.clear();
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
+                    for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                        while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
+                        while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
+                    }
+                    p1.setGold(0);
+                    p1.resetCounter();
+                    score = p1.getMaxGold();
+                    try {
+                        File bestScore = new File("text/highscore.txt");
+                        Scanner scoreCheck = new Scanner(bestScore);
+                        highScore = scoreCheck.nextLine();
+                        scoreCheck.close();
+                    } catch (FileNotFoundException ex) {
+                        System.out.println("Error");
+                        ex.printStackTrace();
+                    }
+                    if(Integer.parseInt(highScore) < score) {
+                        highScore = score + "";
+                    }
+                    p1.resetMaxGold();
+                    p1.setTreasure(0);
+                    activeScreen = end;
+                    endSpeech.play();
+                    try {
+                        main1.resetAudioStream();
+                        main2.resetAudioStream();
+                        main3.resetAudioStream();
+                        main4.resetAudioStream();
+                        main5.resetAudioStream();
+                        main6.resetAudioStream();
+                        main7.resetAudioStream();
+                    } catch (Exception f) {
+                        f.printStackTrace();
+                    }
+                    break;
+                }
+                for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                    if(grid[i][e.getCol()] == Enemy.allEnemies.get(x) && Enemy.allEnemies.get(x) != e) {
+                        Enemy.allEnemies.remove(x);
+                        grid[i][e.getCol()] = null;
+                    }
+                }
+            }
         }
     }
 
