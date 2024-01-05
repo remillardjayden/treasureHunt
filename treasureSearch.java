@@ -169,7 +169,7 @@ public class treasureSearch extends Game  {
                             else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
                             else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
                             Enemy.allEnemies.get(i).increaseTime();
-                            if(Enemy.allEnemies.get(i).getTime() == 10) {
+                            if(Enemy.allEnemies.get(i).getTime() == 20) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setSprite(g5);
                                 Enemy.allEnemies.get(i).setTime(0);
@@ -540,7 +540,7 @@ public class treasureSearch extends Game  {
                             else if(roll == 2 && Enemy.allEnemies.get(i).getRow()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()+1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).increaseRow(); }}
                             else if(roll == 3 && Enemy.allEnemies.get(i).getRow()-1 > 0) { if(grid[Enemy.allEnemies.get(i).getRow()-1][Enemy.allEnemies.get(i).getCol()] == null) { Enemy.allEnemies.get(i).decreaseRow(); }}
                             Enemy.allEnemies.get(i).increaseTime();
-                            if(Enemy.allEnemies.get(i).getTime() == 10) {
+                            if(Enemy.allEnemies.get(i).getTime() == 20) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setSprite(g5);
                                 Enemy.allEnemies.get(i).setTime(0);

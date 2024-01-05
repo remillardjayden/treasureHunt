@@ -93,7 +93,7 @@ public class gameScreen extends Screen {
         }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
             int roll = (int)(Math.random()*50) + 1;
-            if(roll>=26) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.g1); }
+            if(roll==1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.g1); }
             else if(roll%5==0) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e11); }
             else if(roll%5==1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e21); }
             else if(roll%5==2) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.e31); }
