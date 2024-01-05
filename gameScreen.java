@@ -39,7 +39,13 @@ public class gameScreen extends Screen {
                 } else if(treasureSearch.t.getRow() == r && treasureSearch.t.getCol() == c) {
                     treasureSearch.grid[r][c] = treasureSearch.t;
                 } else {
-                    treasureSearch.grid[r][c] = null;
+                    for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
+                        if(treasureSearch.shop.getProducts().get(i).getRow() == r && treasureSearch.shop.getProducts().get(i).getCol() == c && treasureSearch.p1.getMaxGold() >= treasureSearch.shop.getProducts().get(i).getPrice()) {
+                            treasureSearch.grid[r][c] = treasureSearch.shop.getProducts().get(i);
+                        } else {
+                            treasureSearch.grid[r][c] = null;
+                        }
+                    }
                 }
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(Enemy.allEnemies.get(i).getRow() == r && Enemy.allEnemies.get(i).getCol() == c) {
@@ -112,7 +118,7 @@ public class gameScreen extends Screen {
             }
             treasureSearch.spawn.play();
             if(itemcount < treasureSearch.shop.getProducts().size()) {
-                treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getX()][treasureSearch.shop.getProducts().get(itemcount).getY()] = treasureSearch.shop.getProducts().get(itemcount);
+                treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getRow()][treasureSearch.shop.getProducts().get(itemcount).getCol()] = treasureSearch.shop.getProducts().get(itemcount);
                 itemcount++;
             }
         }
