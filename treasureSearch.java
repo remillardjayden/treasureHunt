@@ -579,6 +579,13 @@ public class treasureSearch extends Game  {
                     }
                 }
             }
+        } else if(ke.getKeyChar() == KeyEvent.VK_SPACE) {
+            p1.setRow((int)(Math.random()*15));
+            p1.setCol((int)(Math.random()*15));
+            for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                Enemy.allEnemies.get(i).setRow((int)(Math.random()*15));
+                Enemy.allEnemies.get(i).setCol((int)(Math.random()*15));
+            }
         }
     }
 
