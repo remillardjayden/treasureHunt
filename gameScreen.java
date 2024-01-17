@@ -97,6 +97,14 @@ public class gameScreen extends Screen {
                 break;
             }
         }
+        for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
+            if(treasureSearch.shop.getProducts().get(i).getCol() == treasureSearch.p1.getCol() && treasureSearch.shop.getProducts().get(i).getRow() == treasureSearch.p1.getRow()) {
+                System.out.println("Contact");
+                treasureSearch.grid[treasureSearch.shop.getProducts().get(i).getRow()][treasureSearch.shop.getProducts().get(i).getCol()] = null;
+                if(treasureSearch.shop.getProducts().get(i).getSprite() == treasureSearch.treasureButton) { System.out.println("Entered"); }
+                // treasureSearch.shop.getProducts().remove(i);
+            }
+        }
         if(treasureSearch.p1.getCounter() == 10 && treasureSearch.p1.getMaxGold() == treasureSearch.p1.getGold() && treasureSearch.p1.getGold() != 0) {
             int roll = (int)(Math.random()*50) + 1;
             if(roll==1) { new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.g1); }
