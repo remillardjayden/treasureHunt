@@ -23,7 +23,7 @@ public class treasureSearch extends Game  {
     static titleScreen start;
     static endScreen end;
     static BufferedImage playerImg;
-    static BufferedImage treasureImg;
+    static BufferedImage treasureImg, specialTreasureImg;
     static BufferedImage e11, e12, e13, e14, e15;
     static BufferedImage e21, e22, e23, e24, e25;
     static BufferedImage e31, e32, e33, e34, e35;
@@ -37,6 +37,7 @@ public class treasureSearch extends Game  {
     static ItemShop shop;
     static int score;
     static String highScore;
+    static Treasure t1, t2, t3;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -81,6 +82,7 @@ public class treasureSearch extends Game  {
             qSus=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireBiteLip.png"));
             emptiness=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
             treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
+            specialTreasureImg=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasureImg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
