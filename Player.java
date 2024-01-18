@@ -15,7 +15,7 @@ public class Player extends GamerObject{
     public int getGold() { return totalGold; }
     public void increaseGold(int g) {
         totalGold += g;
-        if(totalGold > maxGold) { maxGold = totalGold; }
+        maxGold += g;
         counter += g;
         if(counter > 10) { counter = 10; }
     }
