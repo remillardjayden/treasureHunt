@@ -73,6 +73,15 @@ public class gameScreen extends Screen {
                         }
                     }
                 }
+                if(treasureSearch.t1 != null) {
+                    if(treasureSearch.t1.getRow() == r && treasureSearch.t1.getCol() == c) {
+                        treasureSearch.grid[r][c] = treasureSearch.t1;
+                    } else if(treasureSearch.t2.getRow() == r && treasureSearch.t2.getCol() == c) {
+                        treasureSearch.grid[r][c] = treasureSearch.t2;
+                    } else if(treasureSearch.t3.getRow() == r && treasureSearch.t3.getCol() == c) {
+                        treasureSearch.grid[r][c] = treasureSearch.t3;
+                    }
+                }
                 for(int i = 0; i < Enemy.allEnemies.size(); i++) {
                     if(Enemy.allEnemies.get(i).getRow() == r && Enemy.allEnemies.get(i).getCol() == c) {
                         treasureSearch.grid[r][c] = Enemy.allEnemies.get(i);
@@ -138,11 +147,14 @@ public class gameScreen extends Screen {
                 if(treasureSearch.shop.getProducts().get(i).getSprite() == treasureSearch.treasureButton) {
                     for(int x = 0; x < 3; x++) {
                         if(x == 0) { 
-                            treasureSearch.t1 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*2, treasureSearch.treasureImg);
+                            treasureSearch.t1 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.grid[treasureSearch.t1.getRow()][treasureSearch.t1.getCol()] = treasureSearch.t1;
                         } else if(x == 1) {
-                            treasureSearch.t2 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*2, treasureSearch.treasureImg);
+                            treasureSearch.t2 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.grid[treasureSearch.t2.getRow()][treasureSearch.t2.getCol()] = treasureSearch.t2;
                         } else {
-                            treasureSearch.t3 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*2, treasureSearch.treasureImg);
+                            treasureSearch.t3 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.grid[treasureSearch.t3.getRow()][treasureSearch.t3.getCol()] = treasureSearch.t3;
                         }
                     }
                 }
@@ -189,8 +201,14 @@ public class gameScreen extends Screen {
                 }
                 if(treasureSearch.grid[r][c] == treasureSearch.p1) {
                     pen.drawImage(treasureSearch.p1.getSprite(),50*(1+c),50*(1+r),50,50,null);
-                } else if(treasureSearch.grid[r][c] == treasureSearch.t || (treasureSearch.grid[r][c] == treasureSearch.t1 && treasureSearch.t1 != null) || (treasureSearch.grid[r][c] == treasureSearch.t2 && treasureSearch.t2 != null) || (treasureSearch.grid[r][c] == treasureSearch.t3 && treasureSearch.t3 != null)) {
+                } else if(treasureSearch.grid[r][c] == treasureSearch.t) {
                     pen.drawImage(treasureSearch.t.getSprite(),50*(1+c),50*(1+r),50,50,null);
+                } else if(treasureSearch.grid[r][c] == treasureSearch.t1 && treasureSearch.t1 != null) { 
+                    pen.drawImage(treasureSearch.t1.getSprite(),50*(1+c),50*(1+r),50,50,null);
+                } else if(treasureSearch.grid[r][c] == treasureSearch.t2 && treasureSearch.t2 != null) { 
+                    pen.drawImage(treasureSearch.t2.getSprite(),50*(1+c),50*(1+r),50,50,null);
+                } else if(treasureSearch.grid[r][c] == treasureSearch.t3 && treasureSearch.t3 != null) { 
+                    pen.drawImage(treasureSearch.t3.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 }
                 for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
                     if(treasureSearch.grid[r][c] == treasureSearch.shop.getProducts().get(i)) {
