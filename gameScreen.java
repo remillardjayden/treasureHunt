@@ -24,32 +24,27 @@ public class gameScreen extends Screen {
             treasureSearch.t.setWorth((int)((Math.random()*3)+1));
             treasureSearch.grid[treasureSearch.t.getRow()][treasureSearch.t.getCol()] = treasureSearch.t;
         }
-        if(treasureSearch.t1 != null) {
             for(int x = 0; x < 3; x++) {
-                if(x == 0 && treasureSearch.p1.getRow() == treasureSearch.t1.getRow() && treasureSearch.p1.getCol() == treasureSearch.t1.getCol()) {
-                    treasureSearch.p1.increaseTreasure();
-                    treasureSearch.p1.increaseGold(treasureSearch.t1.getWorth());
-                    treasureSearch.t1.setRow((int)(Math.random()*15));
-                    treasureSearch.t1.setCol((int)(Math.random()*15));
-                    treasureSearch.t1.setWorth(treasureSearch.t.getWorth()*2);
-                    treasureSearch.grid[treasureSearch.t1.getRow()][treasureSearch.t1.getCol()] = treasureSearch.t1;
-                } else if(x == 1 && treasureSearch.p1.getRow() == treasureSearch.t2.getRow() && treasureSearch.p1.getCol() == treasureSearch.t2.getCol()) {
-                    treasureSearch.p1.increaseTreasure();
-                    treasureSearch.p1.increaseGold(treasureSearch.t2.getWorth());
-                    treasureSearch.t2.setRow((int)(Math.random()*15));
-                    treasureSearch.t2.setCol((int)(Math.random()*15));
-                    treasureSearch.t2.setWorth(treasureSearch.t.getWorth()*2);
-                    treasureSearch.grid[treasureSearch.t2.getRow()][treasureSearch.t2.getCol()] = treasureSearch.t2;
-                } else if(treasureSearch.p1.getRow() == treasureSearch.t3.getRow() && treasureSearch.p1.getCol() == treasureSearch.t3.getCol()) {
-                    treasureSearch.p1.increaseTreasure();
-                    treasureSearch.p1.increaseGold(treasureSearch.t3.getWorth());
-                    treasureSearch.t3.setRow((int)(Math.random()*15));
-                    treasureSearch.t3.setCol((int)(Math.random()*15));
-                    treasureSearch.t3.setWorth(treasureSearch.t.getWorth()*2);
-                    treasureSearch.grid[treasureSearch.t3.getRow()][treasureSearch.t3.getCol()] = treasureSearch.t3;
+                if(treasureSearch.t1 != null) {
+                    if(x == 0 && treasureSearch.p1.getRow() == treasureSearch.t1.getRow() && treasureSearch.p1.getCol() == treasureSearch.t1.getCol()) {
+                        treasureSearch.p1.increaseTreasure();
+                        treasureSearch.p1.increaseGold(treasureSearch.t1.getWorth());
+                        treasureSearch.t1 = null;
+                    } 
+                } if(treasureSearch.t2 != null) {
+                    if(x == 1 && treasureSearch.p1.getRow() == treasureSearch.t2.getRow() && treasureSearch.p1.getCol() == treasureSearch.t2.getCol()) {
+                        treasureSearch.p1.increaseTreasure();
+                        treasureSearch.p1.increaseGold(treasureSearch.t2.getWorth());
+                        treasureSearch.t2 = null;
+                    }
+                } if(treasureSearch.t3 != null) {
+                    if(treasureSearch.p1.getRow() == treasureSearch.t3.getRow() && treasureSearch.p1.getCol() == treasureSearch.t3.getCol()) {
+                        treasureSearch.p1.increaseTreasure();
+                        treasureSearch.p1.increaseGold(treasureSearch.t3.getWorth());
+                        treasureSearch.t3 = null;
+                    }
                 }
             }
-        }
         for(int e = 0; e < Enemy.allEnemies.size(); e++) {
             if(Enemy.allEnemies.get(e).getRow() == treasureSearch.t.getRow() && Enemy.allEnemies.get(e).getCol() == treasureSearch.t.getCol()) {
                 treasureSearch.t.setRow((int)(Math.random()*15));
@@ -76,9 +71,15 @@ public class gameScreen extends Screen {
                 if(treasureSearch.t1 != null) {
                     if(treasureSearch.t1.getRow() == r && treasureSearch.t1.getCol() == c) {
                         treasureSearch.grid[r][c] = treasureSearch.t1;
-                    } else if(treasureSearch.t2.getRow() == r && treasureSearch.t2.getCol() == c) {
+                    }
+                }
+                if(treasureSearch.t2 != null) {
+                    if(treasureSearch.t2.getRow() == r && treasureSearch.t2.getCol() == c) {
                         treasureSearch.grid[r][c] = treasureSearch.t2;
-                    } else if(treasureSearch.t3.getRow() == r && treasureSearch.t3.getCol() == c) {
+                    }
+                }
+                if(treasureSearch.t3 != null) {
+                    if(treasureSearch.t3.getRow() == r && treasureSearch.t3.getCol() == c) {
                         treasureSearch.grid[r][c] = treasureSearch.t3;
                     }
                 }
