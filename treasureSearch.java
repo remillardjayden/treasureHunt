@@ -31,7 +31,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e51, e52, e53, e54, e55;
     static BufferedImage g1, g2, g3, g4, g5;
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
-    static BufferedImage emptiness;
+    static BufferedImage voidweaver;
     static BufferedImage treasureButton;
     static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7;
     static ItemShop shop;
@@ -80,7 +80,7 @@ public class treasureSearch extends Game  {
             qTalk=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireTalk.png"));
             qBlink=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireCloseEyes.png"));
             qSus=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireBiteLip.png"));
-            emptiness=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
+            voidweaver=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
             treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
             specialTreasureImg=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasureImg.png"));
         } catch (IOException e) {
@@ -107,7 +107,7 @@ public class treasureSearch extends Game  {
         p1 = new Player(7, 7, playerImg);
         highScore = "2";
         score = p1.getMaxGold();
-        new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
+        new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
         t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
             while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
@@ -600,7 +600,7 @@ public class treasureSearch extends Game  {
                     p1.setRow(7);
                     p1.setCol(7);
                     Enemy.allEnemies.clear();
-                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
                     for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                         while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                         while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
@@ -652,7 +652,7 @@ public class treasureSearch extends Game  {
                     p1.setRow(7);
                     p1.setCol(7);
                     Enemy.allEnemies.clear();
-                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), emptiness);
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
                     for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                         while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                         while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }

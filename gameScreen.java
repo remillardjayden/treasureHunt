@@ -104,7 +104,7 @@ public class gameScreen extends Screen {
                         treasureSearch.t3 = null;
                     }
                 }
-                new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.emptiness);
+                new Enemy((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.voidweaver);
                 for(int x = 0; x < Enemy.allEnemies.size(); x++) {
                     while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
                     while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
