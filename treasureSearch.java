@@ -29,7 +29,7 @@ public class treasureSearch extends Game  {
     static BufferedImage e31, e32, e33, e34, e35;
     static BufferedImage e41, e42, e43, e44, e45, e46;
     static BufferedImage e51, e52, e53, e54, e55;
-    static BufferedImage g1, g2, g3, g4, g5;
+    static BufferedImage g1, g2, g3, g4, g5, g6;
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
     static BufferedImage treasureButton;
@@ -74,6 +74,7 @@ public class treasureSearch extends Game  {
             g3=ImageIO.read(getClass().getResourceAsStream("/images/Gojo3.png"));
             g4=ImageIO.read(getClass().getResourceAsStream("/images/Gojo4.png"));
             g5=ImageIO.read(getClass().getResourceAsStream("/images/Gojo5.png"));
+            g6=ImageIO.read(getClass().getResourceAsStream("/images/invispider.png"));
             qIdle=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireIdle.png"));
             qUp=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireLookUp.png"));
             qDown=ImageIO.read(getClass().getResourceAsStream("/images/QuentinQuagmireLookDown.png"));
@@ -498,8 +499,9 @@ public class treasureSearch extends Game  {
                                     else if(Enemy.allEnemies.get(r).getSprite() == e21 || Enemy.allEnemies.get(r).getSprite() == e22 || Enemy.allEnemies.get(r).getSprite() == e23 || Enemy.allEnemies.get(r).getSprite() == e24) { Enemy.allEnemies.get(r).setSprite(e25); }
                                     else if(Enemy.allEnemies.get(r).getSprite() == e31 || Enemy.allEnemies.get(r).getSprite() == e32 || Enemy.allEnemies.get(r).getSprite() == e33 || Enemy.allEnemies.get(r).getSprite() == e34) { Enemy.allEnemies.get(r).setSprite(e35); }
                                     else if(Enemy.allEnemies.get(r).getSprite() == e41 || Enemy.allEnemies.get(r).getSprite() == e42 || Enemy.allEnemies.get(r).getSprite() == e43 || Enemy.allEnemies.get(r).getSprite() == e44) { Enemy.allEnemies.get(r).setSprite(e46); }
-                                    else { Enemy.allEnemies.get(r).setSprite(e55); }
+                                    else if(Enemy.allEnemies.get(r).getSprite() == g1 || Enemy.allEnemies.get(r).getSprite() == g2 || Enemy.allEnemies.get(r).getSprite() == g3 || Enemy.allEnemies.get(r).getSprite() == g4 || Enemy.allEnemies.get(r).getSprite() == g5){ Enemy.allEnemies.get(r).setSprite(g6); }
                                 }
+                                Enemy.allEnemies.get(i).setSprite(e55);
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
@@ -534,7 +536,7 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         }
-                    } else if(Enemy.allEnemies.get(i).getSprite() == g1 || Enemy.allEnemies.get(i).getSprite() == g2 || Enemy.allEnemies.get(i).getSprite() == g3 || Enemy.allEnemies.get(i).getSprite() == g4 || Enemy.allEnemies.get(i).getSprite() == g5) {
+                    } else if(Enemy.allEnemies.get(i).getSprite() == g1 || Enemy.allEnemies.get(i).getSprite() == g2 || Enemy.allEnemies.get(i).getSprite() == g3 || Enemy.allEnemies.get(i).getSprite() == g4 || Enemy.allEnemies.get(i).getSprite() == g5 || Enemy.allEnemies.get(i).getSprite() == g6) {
                         if(!Enemy.allEnemies.get(i).isAngry()) {
                             int roll = (int)(Math.random()*4);
                             if(roll == 0 && Enemy.allEnemies.get(i).getCol()+1 < 14) { if(grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()+1] == null) { Enemy.allEnemies.get(i).increaseCol(); }}
@@ -545,6 +547,36 @@ public class treasureSearch extends Game  {
                             if(Enemy.allEnemies.get(i).getTime() == 20) {
                                 Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setSprite(g5);
+                                Enemy.allEnemies.get(i).setTime(0);
+                            }
+                        } else if(Enemy.allEnemies.get(i).isAngry() && Enemy.allEnemies.get(i).getSprite() == g6) {
+                            xDelta = Enemy.allEnemies.get(i).getCol() - p1.getCol();
+                            yDelta = Enemy.allEnemies.get(i).getRow() - p1.getRow();
+                            if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).increaseCol();
+                            } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
+                                Enemy.allEnemies.get(i).decreaseCol();
+                            } else if(yDelta < 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).increaseRow();
+                            } else if(yDelta > 0 && Math.abs(xDelta) < Math.abs(yDelta)) {
+                                Enemy.allEnemies.get(i).decreaseRow();
+                            } else if(xDelta == 0) {
+                                if(yDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseCol();
+                                } else if(yDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseCol();
+                                }
+                            } else if(yDelta == 0) {
+                                if(xDelta < 0) {
+                                    Enemy.allEnemies.get(i).increaseRow();
+                                } else if(xDelta > 0) {
+                                    Enemy.allEnemies.get(i).decreaseRow();
+                                }
+                            }
+                            Enemy.allEnemies.get(i).increaseTime();
+                            if(Enemy.allEnemies.get(i).getTime() == 8) {
+                                Enemy.allEnemies.get(i).setSprite(g1);
+                                Enemy.allEnemies.get(i).changeAngry();
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else {
@@ -699,6 +731,113 @@ public class treasureSearch extends Game  {
         }
     }
 
+    public static void hollowBlack(Graphics pen, Enemy e) {
+        pen.setColor(Color.BLUE);
+        for(int i = 0; i < 15; i++) {
+            if(i != e.getCol()) { pen.fillRect(50*(i+1), 50*(e.getRow()+1), 50, 50); }
+            if(grid[e.getRow()][i] != null && i != e.getCol()) {
+                if(grid[e.getRow()][i] == p1) {
+                    p1.setRow(7);
+                    p1.setCol(7);
+                    Enemy.allEnemies.clear();
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
+                    for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                        while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
+                        while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
+                    }
+                    p1.setGold(0);
+                    p1.resetCounter();
+                    score = p1.getMaxGold();
+                    try {
+                        File bestScore = new File("text/highscore.txt");
+                        Scanner scoreCheck = new Scanner(bestScore);
+                        highScore = scoreCheck.nextLine();
+                        scoreCheck.close();
+                    } catch (FileNotFoundException ex) {
+                        System.out.println("Error");
+                        ex.printStackTrace();
+                    }
+                    if(Integer.parseInt(highScore) < score) {
+                        highScore = score + "";
+                    }
+                    p1.resetMaxGold();
+                    p1.setTreasure(0);
+                    activeScreen = end;
+                    endSpeech.play();
+                    try {
+                        main1.resetAudioStream();
+                        main2.resetAudioStream();
+                        main3.resetAudioStream();
+                        main4.resetAudioStream();
+                        main5.resetAudioStream();
+                        main6.resetAudioStream();
+                        main7.resetAudioStream();
+                    } catch (Exception f) {
+                        f.printStackTrace();
+                    }
+                    break;
+                }
+                for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                    if(grid[e.getRow()][i] == Enemy.allEnemies.get(x) && Enemy.allEnemies.get(x) != e) {
+                        Enemy.allEnemies.remove(x);
+                        grid[e.getRow()][i] = null;
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < 15; i++) {
+            if(i != e.getRow()) { pen.fillRect(50*(e.getCol()+1), 50*(i+1), 50, 50); }
+            if(grid[i][e.getCol()] != null && i != e.getRow()) {
+                if(grid[i][e.getCol()] == p1) {
+                    p1.setRow(7);
+                    p1.setCol(7);
+                    Enemy.allEnemies.clear();
+                    new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
+                    for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                        while(Enemy.allEnemies.get(x).getRow()%2 != 0) { Enemy.allEnemies.get(x).setRow((int)(Math.random()*15)); }
+                        while(Enemy.allEnemies.get(x).getCol()%2 != 1) { Enemy.allEnemies.get(x).setCol((int)(Math.random()*15)); }
+                    }
+                    p1.setGold(0);
+                    p1.resetCounter();
+                    score = p1.getMaxGold();
+                    try {
+                        File bestScore = new File("text/highscore.txt");
+                        Scanner scoreCheck = new Scanner(bestScore);
+                        highScore = scoreCheck.nextLine();
+                        scoreCheck.close();
+                    } catch (FileNotFoundException ex) {
+                        System.out.println("Error");
+                        ex.printStackTrace();
+                    }
+                    if(Integer.parseInt(highScore) < score) {
+                        highScore = score + "";
+                    }
+                    p1.resetMaxGold();
+                    p1.setTreasure(0);
+                    activeScreen = end;
+                    endSpeech.play();
+                    try {
+                        main1.resetAudioStream();
+                        main2.resetAudioStream();
+                        main3.resetAudioStream();
+                        main4.resetAudioStream();
+                        main5.resetAudioStream();
+                        main6.resetAudioStream();
+                        main7.resetAudioStream();
+                    } catch (Exception f) {
+                        f.printStackTrace();
+                    }
+                    break;
+                }
+                for(int x = 0; x < Enemy.allEnemies.size(); x++) {
+                    if(grid[i][e.getCol()] == Enemy.allEnemies.get(x) && Enemy.allEnemies.get(x) != e) {
+                        Enemy.allEnemies.remove(x);
+                        grid[i][e.getCol()] = null;
+                    }
+                }
+            }
+        }
+    }
     @Override
     public void keyPressed(KeyEvent ke) { activeScreen.keyPressed(ke); }
 

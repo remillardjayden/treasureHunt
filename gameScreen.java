@@ -226,6 +226,9 @@ public class gameScreen extends Screen {
                         if(Enemy.allEnemies.get(i).isAngry() && Enemy.allEnemies.get(i).getSprite() == treasureSearch.g5) {
                             treasureSearch.hollowPurple(pen, Enemy.allEnemies.get(i));
                         }
+                        if(Enemy.allEnemies.get(i).isAngry() && Enemy.allEnemies.get(i).getSprite() == treasureSearch.g6) {
+                            treasureSearch.hollowBlack(pen, Enemy.allEnemies.get(i));
+                        }
                     }
                 }
             }
