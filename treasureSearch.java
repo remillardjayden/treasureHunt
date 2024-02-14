@@ -33,7 +33,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer fred, endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7;
+    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -88,17 +88,12 @@ public class treasureSearch extends Game  {
             e.printStackTrace();
         }
         try {
-            fred = new SimpleAudioPlayer("audio/MusicBox.wav");
             endSpeech = new SimpleAudioPlayer("audio/Speech.wav");
-            spawn = new SimpleAudioPlayer("audio/Boom.wav");
+            spawn = new SimpleAudioPlayer("audio/One.wav");
             title = new SimpleAudioPlayer("audio/Title.wav");
-            main1 = new SimpleAudioPlayer("audio/Toji.wav");
-            main2 = new SimpleAudioPlayer("audio/Gojo.wav");
-            main3 = new SimpleAudioPlayer("audio/Sukuna.wav");
-            main4 = new SimpleAudioPlayer("audio/Yuji.wav");
-            main5 = new SimpleAudioPlayer("audio/Mahito.wav");
-            main6 = new SimpleAudioPlayer("audio/CounterStrike.wav");
-            main7 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
+            main1 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
+            main2 = new SimpleAudioPlayer("audio/NegativeRhapsody.wav");
+            main3 = new SimpleAudioPlayer("audio/Everlong.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -660,10 +655,6 @@ public class treasureSearch extends Game  {
                         main1.resetAudioStream();
                         main2.resetAudioStream();
                         main3.resetAudioStream();
-                        main4.resetAudioStream();
-                        main5.resetAudioStream();
-                        main6.resetAudioStream();
-                        main7.resetAudioStream();
                     } catch (Exception f) {
                         f.printStackTrace();
                     }
@@ -712,10 +703,6 @@ public class treasureSearch extends Game  {
                         main1.resetAudioStream();
                         main2.resetAudioStream();
                         main3.resetAudioStream();
-                        main4.resetAudioStream();
-                        main5.resetAudioStream();
-                        main6.resetAudioStream();
-                        main7.resetAudioStream();
                     } catch (Exception f) {
                         f.printStackTrace();
                     }
@@ -768,10 +755,6 @@ public class treasureSearch extends Game  {
                         main1.resetAudioStream();
                         main2.resetAudioStream();
                         main3.resetAudioStream();
-                        main4.resetAudioStream();
-                        main5.resetAudioStream();
-                        main6.resetAudioStream();
-                        main7.resetAudioStream();
                     } catch (Exception f) {
                         f.printStackTrace();
                     }
@@ -820,10 +803,6 @@ public class treasureSearch extends Game  {
                         main1.resetAudioStream();
                         main2.resetAudioStream();
                         main3.resetAudioStream();
-                        main4.resetAudioStream();
-                        main5.resetAudioStream();
-                        main6.resetAudioStream();
-                        main7.resetAudioStream();
                     } catch (Exception f) {
                         f.printStackTrace();
                     }

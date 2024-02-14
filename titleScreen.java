@@ -31,14 +31,6 @@ public class titleScreen extends Screen{
                 treasureSearch.main2.loop();
             } else if(song == 2) {
                 treasureSearch.main3.loop();
-            } else if(song == 3) {
-                treasureSearch.main4.loop();
-            } else if(song == 4) {
-                treasureSearch.main5.loop();
-            } else if(song == 5) {
-                treasureSearch.main6.loop();
-            } else {
-                treasureSearch.main7.loop();
             }
         }
     }

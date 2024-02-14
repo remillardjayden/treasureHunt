@@ -132,10 +132,6 @@ public class gameScreen extends Screen {
                     treasureSearch.main1.resetAudioStream();
                     treasureSearch.main2.resetAudioStream();
                     treasureSearch.main3.resetAudioStream();
-                    treasureSearch.main4.resetAudioStream();
-                    treasureSearch.main5.resetAudioStream();
-                    treasureSearch.main6.resetAudioStream();
-                    treasureSearch.main7.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }
