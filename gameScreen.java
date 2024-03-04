@@ -16,13 +16,15 @@ public class gameScreen extends Screen {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(treasureSearch.p1.getRow() == treasureSearch.t.getRow() && treasureSearch.p1.getCol() == treasureSearch.t.getCol()) {
-            treasureSearch.p1.increaseTreasure();
-            treasureSearch.p1.increaseGold(treasureSearch.t.getWorth());
-            treasureSearch.t.setRow((int)(Math.random()*15));
-            treasureSearch.t.setCol((int)(Math.random()*15));
-            treasureSearch.t.setWorth((int)((Math.random()*3)+1));
-            treasureSearch.grid[treasureSearch.t.getRow()][treasureSearch.t.getCol()] = treasureSearch.t;
+        for(int t = 0; t < Treasure.treasures.size(); t++) {
+            if(treasureSearch.p1.getRow() == Treasure.treasures.get(t).getRow() && treasureSearch.p1.getCol() == Treasure.treasures.get(t).getCol()) {
+                treasureSearch.p1.increaseTreasure();
+                treasureSearch.p1.increaseGold(Treasure.treasures.get(t).getWorth());
+                Treasure.treasures.get(t).setRow((int)(Math.random()*15));
+                Treasure.treasures.get(t).setCol((int)(Math.random()*15));
+                Treasure.treasures.get(t).setCol((int)((Math.random()*3)+1));
+                treasureSearch.grid[Treasure.treasures.get(t).getRow()][Treasure.treasures.get(t).getCol()] = Treasure.treasures.get(t);
+            }
         }
             for(int x = 0; x < 3; x++) {
                 if(treasureSearch.t1 != null) {
@@ -46,19 +48,19 @@ public class gameScreen extends Screen {
                 }
             }
         for(int e = 0; e < Enemy.allEnemies.size(); e++) {
-            if(Enemy.allEnemies.get(e).getRow() == treasureSearch.t.getRow() && Enemy.allEnemies.get(e).getCol() == treasureSearch.t.getCol()) {
-                treasureSearch.t.setRow((int)(Math.random()*15));
-                treasureSearch.t.setCol((int)(Math.random()*15));
-                treasureSearch.t.setWorth((int)((Math.random()*3)+1));
-                treasureSearch.grid[treasureSearch.t.getRow()][treasureSearch.t.getCol()] = treasureSearch.t;
+            for(int t = 0; t < Treasure.treasures.size(); t++) {
+                if(Enemy.allEnemies.get(e).getRow() == Treasure.treasures.get(t).getRow() && Enemy.allEnemies.get(e).getCol() == Treasure.treasures.get(t).getCol()) {
+                    Treasure.treasures.get(t).setRow((int)(Math.random()*15));
+                    Treasure.treasures.get(t).setCol((int)(Math.random()*15));
+                    Treasure.treasures.get(t).setCol((int)((Math.random()*3)+1));
+                    treasureSearch.grid[Treasure.treasures.get(t).getRow()][Treasure.treasures.get(t).getCol()] = Treasure.treasures.get(t);
+                }
             }
         }
         for(int r = 0; r < treasureSearch.grid.length; r++) {
             for(int c = 0; c < treasureSearch.grid[r].length; c++) {
                 if(treasureSearch.p1.getRow() == r && treasureSearch.p1.getCol() == c) {
                     treasureSearch.grid[r][c] = treasureSearch.p1;
-                } else if(treasureSearch.t.getRow() == r && treasureSearch.t.getCol() == c) {
-                    treasureSearch.grid[r][c] = treasureSearch.t;
                 } else {
                     for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
                         if(treasureSearch.shop.getProducts().get(i).getRow() == r && treasureSearch.shop.getProducts().get(i).getCol() == c && treasureSearch.p1.getMaxGold() >= treasureSearch.shop.getProducts().get(i).getPrice()) {
@@ -87,6 +89,11 @@ public class gameScreen extends Screen {
                     if(Enemy.allEnemies.get(i).getRow() == r && Enemy.allEnemies.get(i).getCol() == c) {
                         treasureSearch.grid[r][c] = Enemy.allEnemies.get(i);
                     } 
+                }
+                for(int t = 0; t < Treasure.treasures.size(); t++) {
+                    if(Treasure.treasures.get(t).getRow() == r && Treasure.treasures.get(t).getCol() == c) {
+                        treasureSearch.grid[r][c] = Treasure.treasures.get(t);
+                    }
                 }
             }
         }
@@ -135,6 +142,7 @@ public class gameScreen extends Screen {
                     treasureSearch.main4.resetAudioStream();
                     treasureSearch.main5.resetAudioStream();
                     treasureSearch.main6.resetAudioStream();
+                    treasureSearch.main7.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }
@@ -145,15 +153,16 @@ public class gameScreen extends Screen {
             if(treasureSearch.shop.getProducts().get(i).getCol() == treasureSearch.p1.getCol() && treasureSearch.shop.getProducts().get(i).getRow() == treasureSearch.p1.getRow() && treasureSearch.p1.getGold() >= 10) {
                 treasureSearch.grid[treasureSearch.shop.getProducts().get(i).getRow()][treasureSearch.shop.getProducts().get(i).getCol()] = null;
                 if(treasureSearch.shop.getProducts().get(i).getSprite() == treasureSearch.treasureButton) {
+                    int worth = (int)(Math.random()*5)+1;
                     for(int x = 0; x < 3; x++) {
                         if(x == 0) { 
-                            treasureSearch.t1 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.t1 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), worth*3, treasureSearch.treasureImg);
                             treasureSearch.grid[treasureSearch.t1.getRow()][treasureSearch.t1.getCol()] = treasureSearch.t1;
                         } else if(x == 1) {
-                            treasureSearch.t2 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.t2 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), worth*3, treasureSearch.treasureImg);
                             treasureSearch.grid[treasureSearch.t2.getRow()][treasureSearch.t2.getCol()] = treasureSearch.t2;
                         } else {
-                            treasureSearch.t3 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), treasureSearch.t.getWorth()*3, treasureSearch.treasureImg);
+                            treasureSearch.t3 = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), worth*3, treasureSearch.treasureImg);
                             treasureSearch.grid[treasureSearch.t3.getRow()][treasureSearch.t3.getCol()] = treasureSearch.t3;
                         }
                     }
@@ -201,8 +210,6 @@ public class gameScreen extends Screen {
                 }
                 if(treasureSearch.grid[r][c] == treasureSearch.p1) {
                     pen.drawImage(treasureSearch.p1.getSprite(),50*(1+c),50*(1+r),50,50,null);
-                } else if(treasureSearch.grid[r][c] == treasureSearch.t) {
-                    pen.drawImage(treasureSearch.t.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 } else if(treasureSearch.grid[r][c] == treasureSearch.t1 && treasureSearch.t1 != null) { 
                     pen.drawImage(treasureSearch.t1.getSprite(),50*(1+c),50*(1+r),50,50,null);
                 } else if(treasureSearch.grid[r][c] == treasureSearch.t2 && treasureSearch.t2 != null) { 
@@ -213,6 +220,11 @@ public class gameScreen extends Screen {
                 for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
                     if(treasureSearch.grid[r][c] == treasureSearch.shop.getProducts().get(i)) {
                         pen.drawImage(treasureSearch.shop.getProducts().get(i).getSprite(),50*(1+c),50*(1+r),50,50,null);
+                    }
+                }
+                for(int t = 0; t < Treasure.treasures.size(); t++) {
+                    if(treasureSearch.grid[r][c] == Treasure.treasures.get(t)) {
+                        pen.drawImage(Treasure.treasures.get(t).getSprite(),50*(1+c),50*(1+r),50,50,null);
                     }
                 }
             }

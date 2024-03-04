@@ -24,7 +24,7 @@ public class titleScreen extends Screen{
     public void keyPressed(KeyEvent ke) {
         if(ke.getKeyCode() == KeyEvent.VK_ENTER && treasureSearch.activeScreen == treasureSearch.start) {
             treasureSearch.activeScreen = treasureSearch.game;
-            int song = (int)(Math.random()*6);
+            int song = (int)(Math.random()*7);
             if(song == 0) {
                 treasureSearch.main1.loop();
             } else if(song == 1) {
@@ -37,6 +37,8 @@ public class titleScreen extends Screen{
                 treasureSearch.main5.loop();
             } else if(song == 5) {
                 treasureSearch.main6.loop();
+            } else {
+                treasureSearch.main7.loop();
             }
         }
     }

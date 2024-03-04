@@ -17,7 +17,6 @@ public class treasureSearch extends Game  {
     // declare variables here
     static Object[][] grid;
     static Player p1;
-    static Treasure t;
     static Screen activeScreen;
     static gameScreen game;
     static titleScreen start;
@@ -32,8 +31,8 @@ public class treasureSearch extends Game  {
     static BufferedImage g1, g2, g3, g4, g5, g6;
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
-    static BufferedImage treasureButton;
-    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3, main4, main5, main6;
+    static BufferedImage treasureButton, treasureInc;
+    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -84,6 +83,7 @@ public class treasureSearch extends Game  {
             voidweaver=ImageIO.read(getClass().getResourceAsStream("/images/void.png"));
             treasureButton=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasure.png"));
             specialTreasureImg=ImageIO.read(getClass().getResourceAsStream("/images/specialTreasureImg.png"));
+            treasureInc=ImageIO.read(getClass().getResourceAsStream("/images/moreCoins.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,23 +97,26 @@ public class treasureSearch extends Game  {
             main4 = new SimpleAudioPlayer("audio/IGKDBIGUA.wav");
             main5 = new SimpleAudioPlayer("audio/GO.wav");
             main6 = new SimpleAudioPlayer("audio/Drift.wav");
+            main7 = new SimpleAudioPlayer("audio/Ads.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
         shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
         shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
+        shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
         highScore = "2";
         score = p1.getMaxGold();
+        int treasure = 1;
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
-        t = new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);
+        for(int i = 0; i < treasure; i++) {new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);}
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
             while(Enemy.allEnemies.get(i).getRow()%2 != 0) { Enemy.allEnemies.get(i).setRow((int)(Math.random()*15)); }
             while(Enemy.allEnemies.get(i).getCol()%2 != 1) { Enemy.allEnemies.get(i).setCol((int)(Math.random()*15)); }
         }
         grid[p1.getRow()][p1.getCol()] = p1;
-        grid[t.getRow()][t.getCol()] = t;
+        for(int t = 0; t < Treasure.treasures.size(); t++) {grid[Treasure.treasures.get(t).getRow()][Treasure.treasures.get(t).getCol()] = t;}
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
             grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = Enemy.allEnemies.get(i);
         }
@@ -384,8 +387,21 @@ public class treasureSearch extends Game  {
                                 Enemy.allEnemies.get(i).setTime(0);
                             }
                         } else if(Enemy.allEnemies.get(i).isAngry()) {
-                            xDelta = Enemy.allEnemies.get(i).getCol() - t.getCol();
-                            yDelta = Enemy.allEnemies.get(i).getRow() - t.getRow();
+                            for(int t = 0; t < Treasure.treasures.size()-1; t++) {
+                                int xDelta1 = Enemy.allEnemies.get(i).getCol() - Treasure.treasures.get(t+1).getCol();
+                                int yDelta1 = Enemy.allEnemies.get(i).getRow() - Treasure.treasures.get(t+1).getRow();
+                                int delta1 = Math.abs(yDelta1/xDelta1);
+                                int xDelta2 = Enemy.allEnemies.get(i).getCol() - Treasure.treasures.get(t).getCol();
+                                int yDelta2 = Enemy.allEnemies.get(i).getRow() - Treasure.treasures.get(t).getRow();
+                                int delta2 = Math.abs(yDelta2/xDelta2);
+                                if(delta2 > delta1 && xDelta > delta1) {
+                                    xDelta = xDelta1;
+                                    yDelta = yDelta1;
+                                } else if(delta1 > delta2 && xDelta > delta2) {
+                                    xDelta = xDelta2;
+                                    yDelta = yDelta2;
+                                }
+                            }
                             if(xDelta < 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
                                 Enemy.allEnemies.get(i).increaseCol();
                             } else if(xDelta > 0 && Math.abs(yDelta) < Math.abs(xDelta)) {
