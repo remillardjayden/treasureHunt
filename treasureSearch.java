@@ -33,7 +33,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
     static BufferedImage treasureButton;
-    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3;
+    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3, main4, main5, main6;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -94,6 +94,9 @@ public class treasureSearch extends Game  {
             main1 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
             main2 = new SimpleAudioPlayer("audio/NegativeRhapsody.wav");
             main3 = new SimpleAudioPlayer("audio/Everlong.wav");
+            main4 = new SimpleAudioPlayer("audio/IGKDBIGUA.wav");
+            main5 = new SimpleAudioPlayer("audio/GO.wav");
+            main6 = new SimpleAudioPlayer("audio/Drift.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }
