@@ -37,6 +37,7 @@ public class treasureSearch extends Game  {
     static int score;
     static String highScore;
     static Treasure t1, t2, t3;
+    static int treasure;
     public treasureSearch() {
         // initialize variables here
         try {
@@ -110,12 +111,12 @@ public class treasureSearch extends Game  {
         }
         shop = new ItemShop("Shop", new ArrayList<Product>(), 1000, 100);
         shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
-        shop.addProduct(new Product("Spawn Special Treasure", 10, treasureButton, (int)(Math.random()*15), (int)(Math.random()*15)));
+        shop.addProduct(new Product("Add More Treasures!", 25, treasureInc, (int)(Math.random()*15), (int)(Math.random()*15)));
         grid = new Object[15][15];
         p1 = new Player(7, 7, playerImg);
         highScore = "2";
         score = p1.getMaxGold();
-        int treasure = 1;
+        treasure = 1;
         new Enemy((int)(Math.random()*15), (int)(Math.random()*15), voidweaver);
         for(int i = 0; i < treasure; i++) {new Treasure((int)(Math.random()*15), (int)(Math.random()*15), (int)((Math.random()*5)+1), treasureImg);}
         for(int i = 0; i < Enemy.allEnemies.size(); i++) {
@@ -635,9 +636,11 @@ public class treasureSearch extends Game  {
                 }
             }
         } else if(ke.getKeyChar() == KeyEvent.VK_SPACE) {
+            grid[p1.getRow()][p1.getCol()] = null;
             p1.setRow((int)(Math.random()*15));
             p1.setCol((int)(Math.random()*15));
             for(int i = 0; i < Enemy.allEnemies.size(); i++) {
+                grid[Enemy.allEnemies.get(i).getRow()][Enemy.allEnemies.get(i).getCol()] = null;
                 Enemy.allEnemies.get(i).setRow((int)(Math.random()*15));
                 Enemy.allEnemies.get(i).setCol((int)(Math.random()*15));
             }
