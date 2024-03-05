@@ -26,20 +26,21 @@ public class titleScreen extends Screen{
             treasureSearch.activeScreen = treasureSearch.game;
             int song = (int)(Math.random()*7);
             if(song == 0) {
-                treasureSearch.main1.loop();
+                treasureSearch.activeSong = treasureSearch.main1;
             } else if(song == 1) {
-                treasureSearch.main2.loop();
+                treasureSearch.activeSong = treasureSearch.main2;
             } else if(song == 2) {
-                treasureSearch.main3.loop();
+                treasureSearch.activeSong = treasureSearch.main3;
             } else if(song == 3) {
-                treasureSearch.main4.loop();
+                treasureSearch.activeSong = treasureSearch.main4;
             } else if(song == 4) {
-                treasureSearch.main5.loop();
+                treasureSearch.activeSong = treasureSearch.main5;
             } else if(song == 5) {
-                treasureSearch.main6.loop();
+                treasureSearch.activeSong = treasureSearch.main6;
             } else {
-                treasureSearch.main7.loop();
+                treasureSearch.activeSong = treasureSearch.main7;
             }
+            treasureSearch.activeSong.loop();
         }
     }
 }

@@ -135,14 +135,9 @@ public class gameScreen extends Screen {
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
                 treasureSearch.endSpeech.play();
+                treasureSearch.endSong.play();
                 try {
-                    treasureSearch.main1.resetAudioStream();
-                    treasureSearch.main2.resetAudioStream();
-                    treasureSearch.main3.resetAudioStream();
-                    treasureSearch.main4.resetAudioStream();
-                    treasureSearch.main5.resetAudioStream();
-                    treasureSearch.main6.resetAudioStream();
-                    treasureSearch.main7.resetAudioStream();
+                    treasureSearch.activeSong.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }
@@ -187,11 +182,23 @@ public class gameScreen extends Screen {
             treasureSearch.grid[Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getRow()][Enemy.allEnemies.get(Enemy.allEnemies.size()-1).getCol()] = Enemy.allEnemies.get(Enemy.allEnemies.size()-1);
             treasureSearch.p1.resetCounter();
             try {
-                treasureSearch.spawn.resetAudioStream();
+                treasureSearch.spawn1.resetAudioStream();
+                treasureSearch.spawn2.resetAudioStream();
+                treasureSearch.spawn3.resetAudioStream();
+                treasureSearch.spawn4.resetAudioStream();
+                treasureSearch.spawn5.resetAudioStream();
+                treasureSearch.spawn6.resetAudioStream();
+                treasureSearch.spawn7.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            treasureSearch.spawn.play();
+            if(treasureSearch.activeSong == treasureSearch.main1) { treasureSearch.spawn1.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main2) { treasureSearch.spawn2.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main3) { treasureSearch.spawn3.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main4) { treasureSearch.spawn4.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main5) { treasureSearch.spawn5.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main6) { treasureSearch.spawn6.play(); }
+            else if(treasureSearch.activeSong == treasureSearch.main7) { treasureSearch.spawn7.play(); }
             if(itemcount < treasureSearch.shop.getProducts().size()) {
                 treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getRow()][treasureSearch.shop.getProducts().get(itemcount).getCol()] = treasureSearch.shop.getProducts().get(itemcount);
                 itemcount++;

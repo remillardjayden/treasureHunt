@@ -32,7 +32,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
     static BufferedImage treasureButton, treasureInc;
-    static SimpleAudioPlayer endSpeech, spawn, title, main1, main2, main3, main4, main5, main6, main7;
+    static SimpleAudioPlayer endSpeech, endSong, spawn1, spawn2, spawn3, spawn4, spawn5, spawn6, spawn7, title, main1, main2, main3, main4, main5, main6, main7, activeSong;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -89,7 +89,14 @@ public class treasureSearch extends Game  {
         }
         try {
             endSpeech = new SimpleAudioPlayer("audio/Speech.wav");
-            spawn = new SimpleAudioPlayer("audio/One.wav");
+            endSong = new SimpleAudioPlayer("audio/Specialz.wav");
+            spawn1 = new SimpleAudioPlayer("audio/Bwooomp.wav");
+            spawn2 = new SimpleAudioPlayer("audio/Japanese.wav");
+            spawn3 = new SimpleAudioPlayer("audio/Wulululu.wav");
+            spawn4 = new SimpleAudioPlayer("audio/One.wav");
+            spawn5 = new SimpleAudioPlayer("audio/Kacrack.wav");
+            spawn6 = new SimpleAudioPlayer("audio/Something.wav");
+            spawn7 = new SimpleAudioPlayer("audio/Suprise.wav");
             title = new SimpleAudioPlayer("audio/Title.wav");
             main1 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
             main2 = new SimpleAudioPlayer("audio/NegativeRhapsody.wav");
@@ -97,7 +104,7 @@ public class treasureSearch extends Game  {
             main4 = new SimpleAudioPlayer("audio/IGKDBIGUA.wav");
             main5 = new SimpleAudioPlayer("audio/GO.wav");
             main6 = new SimpleAudioPlayer("audio/Drift.wav");
-            main7 = new SimpleAudioPlayer("audio/Ads.wav");
+            main7 = new SimpleAudioPlayer("audio/Doof.wav");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -28,6 +28,7 @@ public class endScreen extends Screen{
             treasureSearch.score = 0;
             try {
                 treasureSearch.endSpeech.resetAudioStream();
+                treasureSearch.endSong.resetAudioStream();
             } catch (Exception e) {
                 e.printStackTrace();
             }
