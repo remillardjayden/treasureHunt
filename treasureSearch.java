@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.imageio.ImageIO;
 public class treasureSearch extends Game  {
     public static final String TITLE = "Treasure Search";
