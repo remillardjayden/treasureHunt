@@ -31,7 +31,7 @@ public class treasureSearch extends Game  {
     static BufferedImage qIdle, qUp, qDown, qTalk, qBlink, qSus;
     static BufferedImage voidweaver;
     static BufferedImage treasureButton, treasureInc;
-    static SimpleAudioPlayer endSpeech, endSong, spawn1, spawn2, spawn3, spawn4, spawn5, spawn6, spawn7, title, main1, main2, main3, main4, main5, main6, main7, activeSong;
+    static SimpleAudioPlayer endSpeech, endSong, spawn1, spawn2, spawn3, spawn4, spawn5, spawn6, spawn7, title, main1, main2, main3, main4, main5, main6, main7, activeSong, addItem;
     static ItemShop shop;
     static int score;
     static String highScore;
@@ -97,6 +97,7 @@ public class treasureSearch extends Game  {
             spawn5 = new SimpleAudioPlayer("audio/Kacrack.wav");
             spawn6 = new SimpleAudioPlayer("audio/Something.wav");
             spawn7 = new SimpleAudioPlayer("audio/Suprise.wav");
+            addItem = new SimpleAudioPlayer("audio/Break.wav");
             title = new SimpleAudioPlayer("audio/Title.wav");
             main1 = new SimpleAudioPlayer("audio/AroundtheWorld.wav");
             main2 = new SimpleAudioPlayer("audio/NegativeRhapsody.wav");
@@ -397,10 +398,32 @@ public class treasureSearch extends Game  {
                             for(int t = 0; t < Treasure.treasures.size()-1; t++) {
                                 int xDelta1 = Enemy.allEnemies.get(i).getCol() - Treasure.treasures.get(t+1).getCol();
                                 int yDelta1 = Enemy.allEnemies.get(i).getRow() - Treasure.treasures.get(t+1).getRow();
-                                int delta1 = Math.abs(yDelta1/xDelta1);
+                                double delta1;
+                                if(xDelta1 != 0 && yDelta1 != 0) {
+                                    double xDelta0 = xDelta1;
+                                    double yDelta0 = yDelta1;
+                                    delta1 = Math.sqrt((Math.pow(xDelta0, 2))+(Math.pow(yDelta0, 2)));
+                                } else if(xDelta1 == 0 && yDelta1 != 0) {
+                                    delta1 = yDelta1;
+                                } else if(xDelta1 != 0 && yDelta1 == 0) {
+                                    delta1 = xDelta1;
+                                } else {
+                                    delta1 = 0;
+                                }
                                 int xDelta2 = Enemy.allEnemies.get(i).getCol() - Treasure.treasures.get(t).getCol();
                                 int yDelta2 = Enemy.allEnemies.get(i).getRow() - Treasure.treasures.get(t).getRow();
-                                int delta2 = Math.abs(yDelta2/xDelta2);
+                                double delta2;
+                                if(xDelta2 != 0 && yDelta2 != 0) {
+                                    double xDelta0 = xDelta1;
+                                    double yDelta0 = yDelta1;
+                                    delta2 = Math.sqrt((Math.pow(xDelta0, 2))+(Math.pow(yDelta0, 2)));
+                                } else if(xDelta2 == 0 && yDelta2 != 0) {
+                                    delta2 = yDelta2;
+                                } else if(xDelta2 != 0 && yDelta2 == 0) {
+                                    delta2 = xDelta2;
+                                } else {
+                                    delta2 = 0;
+                                }
                                 if(delta2 > delta1 && xDelta > delta1) {
                                     xDelta = xDelta1;
                                     yDelta = yDelta1;

@@ -136,6 +136,7 @@ public class gameScreen extends Screen {
                 treasureSearch.endSong.play();
                 try {
                     treasureSearch.activeSong.resetAudioStream();
+                    treasureSearch.addItem.resetAudioStream();
                 } catch (Exception f) {
                     f.printStackTrace();
                 }
@@ -143,7 +144,7 @@ public class gameScreen extends Screen {
             }
         }
         for(int i = 0; i < treasureSearch.shop.getProducts().size(); i++) {
-            if(treasureSearch.shop.getProducts().get(i).getCol() == treasureSearch.p1.getCol() && treasureSearch.shop.getProducts().get(i).getRow() == treasureSearch.p1.getRow() && treasureSearch.p1.getGold() >= 10) {
+            if(treasureSearch.shop.getProducts().get(i).getCol() == treasureSearch.p1.getCol() && treasureSearch.shop.getProducts().get(i).getRow() == treasureSearch.p1.getRow() && treasureSearch.p1.getGold() >= treasureSearch.shop.getProducts().get(i).getPrice()) {
                 treasureSearch.grid[treasureSearch.shop.getProducts().get(i).getRow()][treasureSearch.shop.getProducts().get(i).getCol()] = null;
                 if(treasureSearch.shop.getProducts().get(i).getSprite() == treasureSearch.treasureButton) {
                     int worth = (int)(Math.random()*5)+1;
@@ -203,6 +204,12 @@ public class gameScreen extends Screen {
             if(treasureSearch.p1.getMaxGold() >= treasureSearch.shop.getProducts().get(itemcount).getPrice()) {
                 treasureSearch.grid[treasureSearch.shop.getProducts().get(itemcount).getRow()][treasureSearch.shop.getProducts().get(itemcount).getCol()] = treasureSearch.shop.getProducts().get(itemcount);
                 itemcount++;
+                try {
+                    treasureSearch.addItem.resetAudioStream();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                treasureSearch.addItem.play();
             }
         }
     }
