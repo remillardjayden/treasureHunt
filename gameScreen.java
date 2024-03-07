@@ -130,6 +130,7 @@ public class gameScreen extends Screen {
                     treasureSearch.highScore = treasureSearch.score + "";
                 }
                 treasureSearch.p1.resetMaxGold();
+                itemcount = 0;
                 treasureSearch.p1.setTreasure(0);
                 treasureSearch.activeScreen = treasureSearch.end;
                 treasureSearch.endSpeech.play();
